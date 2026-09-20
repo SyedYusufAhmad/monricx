@@ -147,6 +147,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-search-form input { width: 105px; border: 0; outline: 0; background: transparent; font-family: 'Bodoni Moda', Georgia, serif; font-size: 15px; }
 .monricx-sort-form { align-self: flex-end; }
 .monricx-product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.monricx-product-grid--shop { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .monricx-product-card { min-width: 0; }
 .monricx-product-card__link { display: block; }
 .monricx-product-card__image { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 20%; background: #e6e1e1; }
@@ -372,6 +373,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
     .monricx-header-actions { gap: 11px; }
     .monricx-cart-button { margin-left: 8px; }
     .monricx-product-grid { grid-template-columns: repeat(4, minmax(0,1fr)); }
+    .monricx-product-grid--shop { grid-template-columns: repeat(4, minmax(0,1fr)); }
 }
 
 @media (max-width: 900px) {
@@ -392,6 +394,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
     .monricx-hero__intro { margin-top: 45px; }
     .monricx-philosophy { min-height: 330px; gap: 36px; }
     .monricx-product-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .monricx-product-grid--shop { grid-template-columns: repeat(3, minmax(0,1fr)); }
     .monricx-product-detail { grid-template-columns: 1fr; gap: 50px; }
     .monricx-product-gallery { max-width: 680px; }
     .monricx-related-products > .monricx-product-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
@@ -441,6 +444,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
     .monricx-product-section--home .monricx-product-grid { margin-top: 16px; }
     .monricx-home-pagination { margin-top: 14px; }
     .monricx-product-grid { grid-template-columns: repeat(2, minmax(0,1fr)); column-gap: 20px; row-gap: 15px; }
+    .monricx-product-grid--shop { grid-template-columns: repeat(2, minmax(0,1fr)); }
     .monricx-product-card > form button { min-height: 46px; padding: 13px 16px; }
     .monricx-product-page { padding: 55px 15px 60px; }
     .monricx-product-detail { gap: 38px; }

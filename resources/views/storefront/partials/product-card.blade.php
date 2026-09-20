@@ -18,7 +18,7 @@
             @if ($product->discounted_price_paise !== null)
                 <span>₹{{ number_format($product->price_paise / 100, 2) }}</span>
             @endif
-            <strong>{{ $cardVariants->count() > 1 ? 'From ' : '' }}₹{{ number_format($product->effectivePricePaise() / 100, 2) }}</strong>
+            <strong>₹{{ number_format($product->effectivePricePaise() / 100, 2) }}</strong>
         </div>
     </a>
     <form action="{{ route('cart.items.store') }}" method="post">

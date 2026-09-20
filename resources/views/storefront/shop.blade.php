@@ -5,8 +5,7 @@
         <div class="monricx-product-toolbar">
             <form method="get" class="monricx-search-form">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m16.5 16.5 5 5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
-                <label class="sr-only" for="product-search">Search products</label>
-                <input id="product-search" type="search" name="q" value="{{ $query }}" placeholder="Search products">
+                <input id="product-search" type="search" name="q" value="{{ $query }}" placeholder="Search products" aria-label="Search products">
             </form>
             <form method="get" class="monricx-sort-form">
                 @if ($query !== '')<input type="hidden" name="q" value="{{ $query }}">@endif
@@ -19,14 +18,11 @@
                 </select>
             </form>
         </div>
-        <div class="monricx-product-grid">
+        <div class="monricx-product-grid monricx-product-grid--shop">
             @foreach ($products as $product)
                 @include('storefront.partials.product-card', ['product' => $product])
             @endforeach
         </div>
-        @if ($products->hasPages())
-            <div class="mt-12">{{ $products->links() }}</div>
-        @endif
     </section>
 
     @include('storefront.partials.category-grid', ['variant' => 'shop'])

@@ -39,8 +39,7 @@ class CatalogController extends Controller
             ->when($sort === 'price-desc', fn ($query) => $query->orderByRaw('COALESCE(discounted_price_paise, price_paise) DESC'))
             ->when($sort === 'recent', fn ($query) => $query->latest('published_at'))
             ->when(! in_array($sort, ['price-asc', 'price-desc', 'recent'], true), fn ($query) => $query->orderBy('sort_order'))
-            ->paginate(18)
-            ->withQueryString();
+            ->get();
 
         return view('storefront.shop', compact('products', 'sort', 'query'));
     }
