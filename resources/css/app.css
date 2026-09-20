@@ -415,7 +415,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
     .monricx-footer__socials a { width: 43px; height: 43px; }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
     .monricx-shipping-bar { height: 45px; min-height: 45px; padding-inline: 8px; font-size: 16px; white-space: nowrap; }
     .monricx-offer-bar { padding-block: 6px; }
     .monricx-hero { min-height: 577px; align-items: flex-start; }
@@ -468,7 +468,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
     .monricx-gallery-strip > div { grid-template-columns: repeat(2, 156px); gap: 16px; }
     .monricx-gallery-strip img { width: 156px; height: 156px; }
     .monricx-categories { height: 2243px; min-height: 2243px; padding: 123px 24px 122px; }
-    .monricx-categories__premium { display: none; }
+    .monricx-categories__premium { display: block; font-size: 16px; line-height: 20.8px; }
     .monricx-categories > h2 { margin: 0 auto 40px; font-size: 16px; line-height: 20.8px; }
     .monricx-category-grid { grid-template-columns: 1fr; gap: 19px; }
     .monricx-category-card { aspect-ratio: auto; min-height: 464px; border-radius: 25px; }

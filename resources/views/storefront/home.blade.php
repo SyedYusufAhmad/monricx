@@ -22,17 +22,19 @@
     </section>
 
     <section class="monricx-product-section monricx-product-section--home">
-        <div class="monricx-product-toolbar monricx-product-toolbar--home">
-            <p>{{ $products->total() }} products</p>
-            <form method="get" class="monricx-sort-form">
-                <label for="home-sort">Sort by:</label>
-                <select id="home-sort" name="sort" onchange="this.form.submit()">
-                    <option value="" @selected($sort === '')>Default</option>
-                    <option value="price-asc" @selected($sort === 'price-asc')>Price (low to high)</option>
-                    <option value="price-desc" @selected($sort === 'price-desc')>Price (high to low)</option>
-                </select>
-            </form>
-        </div>
+        @if ($products->isNotEmpty())
+            <div class="monricx-product-toolbar monricx-product-toolbar--home">
+                <p>{{ $products->total() }} products</p>
+                <form method="get" class="monricx-sort-form">
+                    <label for="home-sort">Sort by:</label>
+                    <select id="home-sort" name="sort" onchange="this.form.submit()">
+                        <option value="" @selected($sort === '')>Default</option>
+                        <option value="price-asc" @selected($sort === 'price-asc')>Price (low to high)</option>
+                        <option value="price-desc" @selected($sort === 'price-desc')>Price (high to low)</option>
+                    </select>
+                </form>
+            </div>
+        @endif
         <div class="monricx-product-grid">
             @foreach ($products as $product)
                 @include('storefront.partials.product-card', ['product' => $product])

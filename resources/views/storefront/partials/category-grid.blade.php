@@ -6,7 +6,7 @@
         <article class="monricx-category-card">
             @if ($imagePrefix === 'home')
                 <picture>
-                    <source media="(max-width: 640px)" srcset="{{ asset('images/monricx/collection-necklaces-mobile.jpg') }}">
+                    <source media="(max-width: 768px)" srcset="{{ asset('images/monricx/collection-necklaces-mobile.jpg') }}">
                     <img src="{{ asset('images/monricx/collection-rings-desktop.jpg') }}" alt="a woman wearing a pair of earrings with pearls">
                 </picture>
             @else
@@ -22,7 +22,7 @@
         <article class="monricx-category-card">
             @if ($imagePrefix === 'home')
                 <picture>
-                    <source media="(max-width: 640px)" srcset="{{ asset('images/monricx/collection-rings-mobile.jpg') }}">
+                    <source media="(max-width: 768px)" srcset="{{ asset('images/monricx/collection-rings-mobile.jpg') }}">
                     <img src="{{ asset('images/monricx/collection-earings-desktop.jpg') }}" alt="A gold necklace with a rectangular diamond pendant">
                 </picture>
             @else
@@ -38,7 +38,7 @@
         <article class="monricx-category-card">
             @if ($imagePrefix === 'home')
                 <picture>
-                    <source media="(max-width: 640px)" srcset="{{ asset('images/monricx/collection-earings-mobile.jpg') }}">
+                    <source media="(max-width: 768px)" srcset="{{ asset('images/monricx/collection-earings-mobile.jpg') }}">
                     <img src="{{ asset('images/monricx/collection-necklaces-desktop.jpg') }}" alt="silver-colored rings">
                 </picture>
             @else
@@ -54,7 +54,7 @@
         <article class="monricx-category-card">
             @if ($imagePrefix === 'home')
                 <picture>
-                    <source media="(max-width: 640px)" srcset="{{ asset('images/monricx/collection-bracelets-mobile.webp') }}">
+                    <source media="(max-width: 768px)" srcset="{{ asset('images/monricx/collection-bracelets-mobile.webp') }}">
                     <img src="{{ asset('images/monricx/collection-bracelets-desktop.webp') }}" alt="">
                 </picture>
             @else

@@ -17,6 +17,7 @@
 /public/storage
 /storage/*.key
 /storage/pail
+/storage/app/ui-audit
 /vendor
 Homestead.json
 Homestead.yaml
