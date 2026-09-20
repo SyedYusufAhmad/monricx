@@ -1,0 +1,18 @@
+<?php
+
+return [
+    'driver' => env('HASH_DRIVER', 'argon'),
+
+    'bcrypt' => [
+        'rounds' => env('BCRYPT_ROUNDS', 12),
+        'verify' => env('HASH_VERIFY', true),
+        'limit' => env('BCRYPT_LIMIT', true),
+    ],
+
+    'argon' => [
+        'memory' => env('ARGON_MEMORY', 65_536),
+        'threads' => env('ARGON_THREADS', 1),
+        'time' => env('ARGON_TIME', 4),
+        'verify' => env('HASH_VERIFY', true),
+    ],
+];
