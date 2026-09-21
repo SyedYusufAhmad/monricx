@@ -21,7 +21,8 @@
                  activeImage: 0,
                  variants: @js($variantOptions),
                  selectedVariantId: @js($initialVariant?->id),
-                 productStock: {{ $product->stock }},
+                productStock: {{ $product->stock }},
+                imageCount: {{ $galleryImages->count() }},
                  get selectedVariant() { return this.variants.find(variant => variant.id === Number(this.selectedVariantId)) ?? this.variants[0] ?? null },
                  get selectedStock() { return this.selectedVariant?.stock ?? this.productStock },
                  money(value) { return '₹' + (value / 100).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) }
@@ -37,6 +38,15 @@
                     @empty
                         <div></div>
                     @endforelse
+                    @if ($galleryImages->count() > 1)
+                        <button type="button" class="monricx-product-gallery__arrow monricx-product-gallery__arrow--previous" aria-label="Previous image" @click="activeImage = (activeImage + imageCount - 1) % imageCount">‹</button>
+                        <button type="button" class="monricx-product-gallery__arrow monricx-product-gallery__arrow--next" aria-label="Next image" @click="activeImage = (activeImage + 1) % imageCount">›</button>
+                        <div class="monricx-product-gallery__dots" aria-label="Product image position">
+                            @foreach ($galleryImages as $index => $image)
+                                <button type="button" aria-label="Show image {{ $index + 1 }}" @click="activeImage = {{ $index }}" :class="{ 'is-active': activeImage === {{ $index }} }"><span></span></button>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
                 @if ($galleryImages->count() > 1)
                     <div class="monricx-product-gallery__thumbs" aria-label="Product images">
@@ -99,12 +109,29 @@
     </section>
 
     <section class="monricx-related-products">
-        <h2>The Details That Shine ✨</h2>
+        <h2>{{ $product->slug === 'emerald-aura-pendant' ? 'Elegant emerald-green centerpiece' : 'The Details That Shine ✨' }}</h2>
         <div class="monricx-product-grid">
             @foreach ($relatedProducts as $relatedProduct)
                 @include('storefront.partials.product-card', ['product' => $relatedProduct])
             @endforeach
         </div>
+        @if ($relatedProducts->hasPages())
+            <nav class="monricx-related-pagination" aria-label="Related product pages">
+                @if ($relatedProducts->onFirstPage())
+                    <span aria-hidden="true">‹</span>
+                @else
+                    <a href="{{ $relatedProducts->previousPageUrl() }}" aria-label="Previous related products">‹</a>
+                @endif
+                @foreach ($relatedProducts->getUrlRange(1, $relatedProducts->lastPage()) as $page => $url)
+                    <a href="{{ $url }}" @class(['is-active' => $page === $relatedProducts->currentPage()]) aria-label="Related product page {{ $page }}">{{ $page }}</a>
+                @endforeach
+                @if ($relatedProducts->hasMorePages())
+                    <a href="{{ $relatedProducts->nextPageUrl() }}" aria-label="Next related products">›</a>
+                @else
+                    <span aria-hidden="true">›</span>
+                @endif
+            </nav>
+        @endif
     </section>
 
     <section class="monricx-reviews-empty">

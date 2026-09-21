@@ -168,41 +168,54 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-gallery-strip > div { display: grid; grid-template-columns: repeat(4, 252px); gap: 16px; }
 .monricx-gallery-strip img { width: 252px; height: 252px; object-fit: cover; }
 
-.monricx-product-page { background: #fff; padding: 100px 24px 88px; }
-.monricx-product-detail { display: grid; max-width: 1230px; margin: 0 auto; grid-template-columns: minmax(0,1.04fr) minmax(390px,.96fr); gap: 86px; }
+.monricx-product-page { background: #fff; padding: 100px 16px 80px; color: #0b0b0b; }
+.monricx-product-detail { display: grid; max-width: 1224px; margin: 0 auto; grid-template-columns: minmax(0,600px) minmax(0,624px); gap: 0; }
 .monricx-product-detail > * { min-width: 0; }
-.monricx-product-gallery__main { aspect-ratio: 3 / 4; overflow: hidden; border-radius: 34px 34px 0 0; background: #f0eeee; }
+.monricx-product-gallery__main { position: relative; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 5%; background: #f0eeee; }
 .monricx-product-gallery__main img { width: 100%; height: 100%; object-fit: cover; }
 .monricx-product-gallery__main > div { width: 100%; height: 100%; }
-.monricx-product-gallery__thumbs { display: flex; gap: 12px; margin-top: 18px; overflow-x: auto; }
-.monricx-product-gallery__thumbs button { width: 76px; height: 76px; overflow: hidden; border: 1px solid transparent; opacity: .62; }
+.monricx-product-gallery__arrow { position: absolute; top: 50%; z-index: 2; display: grid; width: 48px; height: 48px; place-content: center; border-radius: 50%; background: rgba(255,255,255,.28); color: #111; font-size: 36px; line-height: 1; transform: translateY(-50%); }
+.monricx-product-gallery__arrow--previous { left: 18px; }
+.monricx-product-gallery__arrow--next { right: 18px; }
+.monricx-product-gallery__dots { display: none; }
+.monricx-product-gallery__thumbs { display: flex; gap: 6px; margin-top: 8px; overflow-x: auto; }
+.monricx-product-gallery__thumbs button { width: 64px; height: 64px; overflow: hidden; border: 1px solid transparent; padding: 3px; opacity: .62; }
 .monricx-product-gallery__thumbs button.is-active { border-color: #111; opacity: 1; }
 .monricx-product-gallery__thumbs img { width: 100%; height: 100%; object-fit: cover; }
-.monricx-product-info { min-width: 0; padding: 3px 0 0; text-align: center; }
-.monricx-product-info h1 { margin: 0; font-family: 'Bodoni Moda', Georgia, serif; font-size: clamp(35px, 3.4vw, 48px); font-weight: 400; line-height: 1.14; }
-.monricx-product-info h2 { margin: 15px 0 0; font-family: 'Bodoni Moda', Georgia, serif; font-size: clamp(18px, 2vw, 24px); font-weight: 400; line-height: 1.35; }
-.monricx-product-info__price { display: flex; justify-content: center; gap: 11px; margin: 28px 0 0; align-items: baseline; font-size: 17px; }
-.monricx-product-info__price span { color: #8c8c8c; text-decoration: line-through; }
-.monricx-product-info__price strong { font-weight: 500; }
-.monricx-product-buy { display: grid; justify-items: center; gap: 28px; margin-top: 43px; }
+.monricx-product-info { min-width: 0; padding: 0 0 32px 80px; text-align: center; }
+.monricx-product-info h1 { width: max-content; max-width: 100%; margin: 0 auto 8px; font-family: 'Bodoni Moda', Georgia, serif; font-size: 28px; font-weight: 400; line-height: 37.8px; }
+.monricx-product-info h2 { width: max-content; max-width: 100%; margin: 0 auto 16px; font-family: 'Bodoni Moda', Georgia, serif; font-size: 18px; font-weight: 400; line-height: 25.2px; }
+.monricx-product-info__price { display: flex; width: max-content; justify-content: center; gap: 8px; margin: 0 auto; align-items: baseline; font-family: 'Manrope', sans-serif; font-size: 16px; line-height: 28px; }
+.monricx-product-info__price span { opacity: .4; text-decoration: line-through; }
+.monricx-product-info__price strong { font-weight: 400; }
+.monricx-product-buy { display: grid; justify-items: center; gap: 32px; margin-top: 32px; }
 .monricx-product-option { display: grid; width: min(100%, 340px); gap: 8px; }
 .monricx-product-option label { font-size: 12px; letter-spacing: .06em; }
 .monricx-product-option select { width: 100%; height: 54px; border: 1px solid #d4d4d4; background: #fff; padding: 0 16px; }
-.monricx-product-buy__controls { display: flex; align-items: center; justify-content: center; gap: 28px; }
-.monricx-product-buy__controls > p { margin: 0; white-space: nowrap; font-size: 14px; }
-.monricx-product-quantity { display: flex; width: 176px; height: 58px; border: 1px solid #d4d4d4; }
-.monricx-product-quantity button, .monricx-product-quantity input { width: 58px; height: 56px; text-align: center; }
-.monricx-product-quantity input { border-inline: 1px solid #d4d4d4; background: #fff; }
-.monricx-product-buy > button { min-width: 150px; border-radius: 999px; background: #080808; padding: 16px 25px; color: #fff; box-shadow: 0 10px 22px rgba(0,0,0,.13); }
+.monricx-product-buy__controls { display: flex; align-items: center; justify-content: center; gap: 24px; }
+.monricx-product-buy__controls > p { margin: 0; white-space: nowrap; font-family: 'Manrope', sans-serif; font-size: 16px; line-height: 28px; }
+.monricx-product-quantity { display: flex; width: 146px; height: 48px; border: 1px solid #dadce0; }
+.monricx-product-quantity button, .monricx-product-quantity input { width: 48px; height: 46px; text-align: center; }
+.monricx-product-quantity input { border-inline: 1px solid #dadce0; background: #fff; }
+.monricx-product-buy > button { min-width: 125px; height: 50px; border-radius: 999px; background: #000; padding: 16px 28px; color: #f7f2f3; font-family: 'Manrope', sans-serif; font-size: 14px; line-height: 18.2px; box-shadow: 0 4px 16px rgba(0,0,0,.12); }
 .monricx-product-buy > button:disabled { cursor: not-allowed; opacity: .45; }
 .monricx-product-error { margin-top: 16px; color: #a22626; font-size: 13px; }
-.monricx-product-description { margin-top: 66px; font-family: 'Bodoni Moda', Georgia, serif; font-size: clamp(20px, 2.1vw, 28px); font-weight: 600; line-height: 1.5; }
-.monricx-related-products { background: #fff; padding: 35px 24px 95px; }
-.monricx-related-products > h2 { max-width: 1230px; margin: 0 auto 46px; font-family: 'Bodoni Moda', Georgia, serif; font-size: 28px; font-weight: 500; text-align: center; }
-.monricx-related-products > .monricx-product-grid { max-width: 1230px; margin: 0 auto; grid-template-columns: repeat(4, minmax(0,1fr)); }
-.monricx-reviews-empty { display: grid; min-height: 245px; place-content: center; gap: 25px; background: #fff; padding: 45px 20px 80px; text-align: center; }
-.monricx-reviews-empty h2 { margin: 0; font-family: 'Bodoni Moda', Georgia, serif; font-size: 28px; font-weight: 500; }
-.monricx-reviews-empty button { justify-self: center; border-radius: 999px; background: #080808; padding: 13px 27px; color: #fff; }
+.monricx-product-description { margin-top: 56px; color: #0b0b0b; font-family: 'Manrope', sans-serif; font-size: 16px; font-weight: 400; line-height: 28px; }
+.monricx-product-description h3 { margin: 0; font-family: inherit; font-size: 18.72px; font-weight: 700; line-height: 32.76px; }
+.monricx-product-description ul { margin: 0; padding-left: 16px; list-style: disc inside; }
+.monricx-product-description li p { display: inline; margin-bottom: 8px; }
+.monricx-related-products { background: #fff; padding: 0 16px; color: #0b0b0b; }
+.monricx-related-products > h2 { max-width: 1224px; margin: 0 auto 32px; font-family: 'Bodoni Moda', Georgia, serif; font-size: 28px; font-weight: 400; line-height: 37.8px; text-align: center; }
+.monricx-related-products > .monricx-product-grid { max-width: 1224px; margin: 0 auto; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 24px; }
+.monricx-related-products .monricx-product-card__image { border-radius: 5%; }
+.monricx-related-products .monricx-product-card__image > span { top: 0; font-size: 16px; line-height: 28px; }
+.monricx-related-products .monricx-product-card > form button { width: 100%; height: 50px; background: #000; color: #f7f2f3; }
+.monricx-related-pagination { display: flex; width: 144px; height: 36px; align-items: center; justify-content: center; margin: 16px auto 0; font-family: 'Manrope', sans-serif; font-size: 13px; }
+.monricx-related-pagination > * { display: grid; width: 36px; height: 36px; place-content: center; }
+.monricx-related-pagination .is-active { font-weight: 700; }
+.monricx-reviews-empty { display: grid; min-height: 0; width: min(1224px, calc(100% - 32px)); place-content: center; gap: 0; margin: 80px auto 100px; background: #fff; padding: 0; text-align: center; }
+.monricx-reviews-empty h2 { margin: 0 0 32px; font-family: 'Bodoni Moda', Georgia, serif; font-size: 28px; font-weight: 400; line-height: 37.8px; }
+.monricx-reviews-empty button { justify-self: center; border-radius: 999px; background: #000; padding: 16px 28px; color: #f7f2f3; font-family: 'Manrope', sans-serif; font-size: 14px; line-height: 18.2px; }
 
 .monricx-checkout-body { margin: 0; background: #fff; color: #202020; font-family: 'DM Sans', sans-serif; }
 .monricx-checkout-header { display: grid; height: 134px; place-content: center; border-bottom: 1px solid #e2e2e2; background: #fff; }
@@ -395,9 +408,19 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
     .monricx-philosophy { min-height: 330px; gap: 36px; }
     .monricx-product-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
     .monricx-product-grid--shop { grid-template-columns: repeat(3, minmax(0,1fr)); }
-    .monricx-product-detail { grid-template-columns: 1fr; gap: 50px; }
-    .monricx-product-gallery { max-width: 680px; }
+    .monricx-product-page { padding: 56px 16px 80px; }
+    .monricx-product-detail { grid-template-columns: 1fr; gap: 0; }
+    .monricx-product-gallery { width: 100%; max-width: none; }
+    .monricx-product-gallery__thumbs { display: none; }
+    .monricx-product-gallery__dots { position: absolute; right: 0; bottom: 16px; left: 0; z-index: 2; display: flex; justify-content: center; }
+    .monricx-product-gallery__dots button { display: grid; width: 20px; height: 20px; place-content: center; }
+    .monricx-product-gallery__dots button span { display: block; width: 10px; height: 10px; border-radius: 50%; background: #fff; opacity: .5; }
+    .monricx-product-gallery__dots button.is-active span { opacity: 1; }
+    .monricx-product-info { padding: 32px 0 24px; }
     .monricx-related-products > .monricx-product-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .monricx-reviews-empty { margin: 40px auto 56px; }
+    .monricx-reviews-empty h2 { font-size: 24px; line-height: 32.4px; }
+    .monricx-reviews-empty button { padding: 14px 22px; }
     .monricx-checkout { grid-template-columns: 1fr; }
     .monricx-checkout-summary { order: -1; border-bottom: 1px solid #e2e2e2; border-left: 0; }
     .monricx-checkout-summary__inner { width: min(620px, calc(100% - 48px)); margin-inline: auto; padding: 35px 0 42px; }
@@ -446,17 +469,17 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
     .monricx-product-grid { grid-template-columns: repeat(2, minmax(0,1fr)); column-gap: 20px; row-gap: 15px; }
     .monricx-product-grid--shop { grid-template-columns: repeat(2, minmax(0,1fr)); }
     .monricx-product-card > form button { min-height: 46px; padding: 13px 16px; }
-    .monricx-product-page { padding: 55px 15px 60px; }
-    .monricx-product-detail { gap: 38px; }
-    .monricx-product-gallery__main { border-radius: 22px 22px 0 0; }
-    .monricx-product-buy { gap: 18px; margin-top: 32px; }
-    .monricx-product-buy__controls { gap: 18px; }
-    .monricx-product-quantity { width: 153px; height: 52px; }
-    .monricx-product-quantity button, .monricx-product-quantity input { width: 51px; height: 50px; }
-    .monricx-product-buy > button { width: 100%; }
-    .monricx-product-description { margin-top: 45px; }
-    .monricx-related-products { padding-inline: 14px; }
-    .monricx-related-products > .monricx-product-grid { gap: 28px 13px; }
+    .monricx-product-page { padding: 56px 16px 80px; }
+    .monricx-product-detail { gap: 0; }
+    .monricx-product-gallery__main { border-radius: 5%; }
+    .monricx-product-buy { gap: 32px; margin-top: 32px; }
+    .monricx-product-buy__controls { gap: 24px; }
+    .monricx-product-quantity { width: 146px; height: 48px; }
+    .monricx-product-quantity button, .monricx-product-quantity input { width: 48px; height: 46px; }
+    .monricx-product-buy > button { width: 113px; min-width: 113px; height: 46px; padding: 14px 22px; }
+    .monricx-product-description { margin-top: 56px; }
+    .monricx-related-products { padding-inline: 16px; }
+    .monricx-related-products > .monricx-product-grid { gap: 24px; }
     .monricx-cart-drawer__heading, .monricx-cart-drawer__items, .monricx-cart-drawer__summary { padding-inline: 20px; }
     .monricx-cart-item { grid-template-columns: 76px minmax(0,1fr) auto; gap: 11px; }
     .monricx-cart-item__image { width: 76px; height: 98px; }
@@ -523,4 +546,8 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
     .monricx-footer__socials a:first-child { height: 63px; }
     .monricx-footer__socials a:last-child { height: 43px; }
     .monricx-back-to-top { right: 16px; bottom: 16px; width: 46px; height: 46px; }
+}
+
+@media (max-width: 600px) {
+    .monricx-related-products > .monricx-product-grid { grid-template-columns: 1fr; }
 }

@@ -23,9 +23,9 @@ class ProductController extends Controller
                 $product->category_id,
                 fn ($query) => $query->where('category_id', $product->category_id)
             )
-            ->orderBy('sort_order')
-            ->limit(4)
-            ->get();
+            ->orderByDesc('sort_order')
+            ->paginate(4, ['*'], 'related_page')
+            ->withQueryString();
 
         return view('storefront.product', compact('product', 'relatedProducts'));
     }
