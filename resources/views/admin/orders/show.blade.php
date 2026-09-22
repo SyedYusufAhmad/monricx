@@ -8,8 +8,8 @@
             <p class="mt-2 text-sm text-black/50">Created {{ $order->created_at->format('d M Y, H:i T') }}</p>
         </div>
         <div class="flex gap-2 text-sm">
-            <span class="rounded-full bg-black/5 px-3 py-1.5">{{ str($order->status)->replace('_', ' ')->title() }}</span>
-            <span class="rounded-full bg-emerald-50 px-3 py-1.5 text-emerald-800">{{ str($order->payment_status)->replace('_', ' ')->title() }}</span>
+            <span class="rounded-full bg-black/5 px-2.5 py-1 text-xs text-black/60">{{ str($order->status)->replace('_', ' ')->title() }}</span>
+            <span @class(['rounded-full px-2.5 py-1 text-xs', 'bg-emerald-50 text-emerald-800' => in_array($order->payment_status, ['captured', 'cod_fee_paid'], true), 'bg-black/5 text-black/60' => ! in_array($order->payment_status, ['captured', 'cod_fee_paid'], true)])>{{ str($order->payment_status)->replace('_', ' ')->title() }}</span>
         </div>
     </div>
 

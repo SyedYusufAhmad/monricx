@@ -41,7 +41,7 @@
                 </div>
             @endif
 
-            <input class="mt-5 block w-full rounded-lg border border-black/20 px-4 py-3 text-sm" type="file" name="images[]" multiple accept="image/jpeg,image/png,image/webp">
+            <input class="mt-5 block w-full rounded-lg border border-black/20 px-4 py-3" type="file" name="images[]" multiple accept="image/jpeg,image/png,image/webp">
             @error('images')<p class="mt-2 text-sm text-red-700">{{ $message }}</p>@enderror
             @error('images.*')<p class="mt-2 text-sm text-red-700">{{ $message }}</p>@enderror
         </section>

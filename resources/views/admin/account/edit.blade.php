@@ -30,7 +30,7 @@
                 <input id="password_confirmation" name="password_confirmation" type="password" required autocomplete="new-password" class="w-full rounded-lg border border-black/20 px-4 py-3">
             </div>
 
-            <button type="submit" class="rounded-lg bg-[#080808] px-5 py-3 text-white">Update password</button>
+            <button type="submit" class="rounded-lg bg-[#080808] px-5 py-3 text-sm text-white">Update password</button>
         </form>
     </section>
 @endsection

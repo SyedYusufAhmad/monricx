@@ -17,7 +17,7 @@
     </section>
 
     <section class="monricx-philosophy">
-        <p>THE MONRICX<br>PHILOSOPHY⭐</p>
+        <p>THE MONRICX PHILOSOPHY⭐</p>
         <p><strong><em>The question isn't 'Can you afford it?' It's 'Can you carry it?</em></strong></p>
     </section>
 

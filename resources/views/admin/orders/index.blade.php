@@ -17,7 +17,7 @@
                 <option value="{{ $option }}" @selected($status === $option)>{{ str($option)->replace('_', ' ')->title() }}</option>
             @endforeach
         </select>
-        <button class="rounded-lg border border-black/20 px-5 py-2.5" type="submit">Filter</button>
+        <button class="rounded-lg border border-black/20 px-5 py-2.5 text-sm" type="submit">Filter</button>
     </form>
 
     <section class="mt-6 overflow-hidden rounded-xl bg-white shadow-sm">
@@ -27,7 +27,7 @@
                 <tbody class="divide-y divide-black/10">
                     @forelse ($orders as $order)
                         <tr>
-                            <td class="px-5 py-4"><a href="{{ route('admin.orders.show', $order) }}" class="font-medium underline decoration-black/20 underline-offset-4">{{ $order->order_number }}</a><p class="mt-1 text-xs text-black/45">{{ str($order->status)->replace('_', ' ')->title() }}</p></td>
+                            <td class="px-5 py-4"><a href="{{ route('admin.orders.show', $order) }}" class="font-medium underline decoration-black/20 underline-offset-4">{{ $order->order_number }}</a><p class="mt-1 inline-block rounded-full bg-black/5 px-2.5 py-1 text-xs text-black/60">{{ str($order->status)->replace('_', ' ')->title() }}</p></td>
                             <td class="px-5 py-4"><p>{{ $order->customer_name }}</p><p class="mt-1 text-xs text-black/45">{{ $order->customer_email }}</p></td>
                             <td class="px-5 py-4">{{ $order->payment_method === 'cash_on_delivery' ? 'Cash on delivery' : 'Online' }}</td>
                             <td class="px-5 py-4">{{ str($order->payment_status)->replace('_', ' ')->title() }}</td>

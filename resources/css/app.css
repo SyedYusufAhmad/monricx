@@ -6,7 +6,7 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
     --font-display: 'Bodoni Moda', Georgia, serif;
     --font-action: 'Manrope', ui-sans-serif, system-ui, sans-serif;
     --color-monricx-black: #080808;
@@ -18,6 +18,8 @@
     color-scheme: light;
     font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
 }
+
+.monricx-site-body { font-family: 'Manrope', ui-sans-serif, system-ui, sans-serif; }
 
 html { scroll-behavior: smooth; }
 body { margin: 0; background: #f7f2f3; }
@@ -55,7 +57,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
     text-align: center;
 }
 
-.monricx-header { position: sticky; top: 40px; z-index: 30; background: #080808; color: #fff; }
+.monricx-header { position: sticky; top: 40px; z-index: 30; background: #0b0b0b; color: #f7f2f3; }
 .monricx-header__inner {
     display: grid;
     min-height: 193px;
@@ -69,8 +71,8 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-logo { display: block; width: 132px; height: 132px; }
 .monricx-logo img { width: 100%; height: 100%; object-fit: cover; }
 .monricx-navigation { display: flex; align-items: center; justify-content: flex-end; gap: 44px; font-family: 'Manrope', sans-serif; font-size: 14px; white-space: nowrap; }
-.monricx-navigation > a, .monricx-shop-trigger { border-bottom: 1px solid transparent; padding: 7px 0; color: #fff; }
-.monricx-navigation > a:hover, .monricx-navigation > a.is-active, .monricx-shop-trigger:hover { border-color: rgba(255,255,255,.8); }
+.monricx-navigation > a, .monricx-shop-trigger { border-bottom: 1px solid transparent; padding: 7px 0; color: #f7f2f3; }
+.monricx-navigation > a:hover, .monricx-navigation > a.is-active, .monricx-shop-trigger:hover { border-color: rgba(247,242,243,.8); }
 .monricx-shop-trigger { display: flex; align-items: center; gap: 9px; cursor: pointer; }
 .monricx-shop-trigger svg { width: 10px; height: 7px; }
 .monricx-shop-menu { position: absolute; top: 38px; left: -18px; z-index: 40; display: grid; min-width: 210px; gap: 1px; border: 1px solid rgba(255,255,255,.14); background: #111; padding: 8px; box-shadow: 0 18px 48px rgba(0,0,0,.35); }
@@ -105,8 +107,8 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-cart-item__price { display: flex; min-width: 67px; flex-direction: column; align-items: flex-end; gap: 3px; font-size: 13px; }
 .monricx-cart-item__price form { margin-bottom: auto; }
 .monricx-cart-item__price button, .monricx-cart-item__price svg { width: 21px; height: 21px; }
-.monricx-cart-item__price span { color: #777; text-decoration: line-through; }
-.monricx-cart-item__price strong { font-weight: 500; }
+.monricx-cart-item__price span { opacity: .4; text-decoration: line-through; }
+.monricx-cart-item__price strong { font-weight: 400; }
 .monricx-cart-empty { display: grid; min-height: 320px; place-content: center; gap: 22px; text-align: center; }
 .monricx-cart-empty a { border-radius: 999px; background: #080808; padding: 13px 30px; color: #fff; }
 .monricx-cart-drawer__summary { flex: 0 0 auto; border-top: 1px solid #e5e5e5; padding: 23px 30px 28px; }
@@ -120,20 +122,22 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .monricx-hero__shade { position: absolute; inset: 0; background: rgba(29,30,32,.5); }
 .monricx-hero__content { position: relative; z-index: 1; width: min(920px, calc(100% - 40px)); padding: 44px 0; transform: translateY(-22px); }
-.monricx-hero__brand { margin: 0; font-family: 'Bodoni Moda', Georgia, serif; font-size: 54px; font-weight: 900; line-height: 70.2px; letter-spacing: -1.25px; }
-.monricx-hero h1 { margin: 38px 0 0; color: #f4e7c5; font-family: 'Bodoni Moda', Georgia, serif; font-size: 48px; line-height: 62.4px; }
+.monricx-hero__brand { margin: 0; font-family: 'Bodoni Moda', Georgia, serif; font-size: 54px; font-weight: 700; line-height: 70.2px; }
+.monricx-hero__brand strong { font-weight: 700; }
+.monricx-hero h1 { margin: 38px 0 0; color: #f4e7c5; font-family: 'Bodoni Moda', Georgia, serif; font-size: 48px; line-height: 60px; }
 .monricx-hero__intro { margin: 70px 0 0; font-family: 'Manrope', sans-serif; font-size: 28px; line-height: 36.4px; letter-spacing: -.8px; }
 .monricx-hero__limited { margin: 8px 0 0; font-family: 'Manrope', sans-serif; font-size: 28px; line-height: 36.4px; letter-spacing: -.8px; }
 .monricx-hero__actions { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; margin-top: 31px; }
-.monricx-hero__actions a { display: flex; width: 132px; height: 53px; align-items: center; justify-content: center; border-radius: 8px; background: #493a0e; color: #fff; font-family: 'Manrope', sans-serif; font-size: 14px; }
-.monricx-hero__actions a:last-child { width: 219px; background: #493a0e; color: #fff; }
-.monricx-hero__actions a:hover { filter: brightness(1.15); }
+.monricx-hero__actions a { display: flex; width: 132px; height: 53px; align-items: center; justify-content: center; border-radius: 8px; background: #f4e7c5; color: #000; font-family: 'Manrope', sans-serif; font-size: 14px; }
+.monricx-hero__actions a:last-child { width: 219px; background: #65541e; color: #fff; }
+.monricx-hero__actions a:hover { background: #c3b89d; }
+.monricx-hero__actions a:last-child:hover { background: #83764b; }
 
-.monricx-philosophy { display: grid; height: 444px; min-height: 444px; place-content: center; justify-items: center; gap: 52px; background: #171819; padding: 46px 20px 58px; text-align: center; }
+.monricx-philosophy { display: grid; height: 444px; min-height: 444px; place-content: center; justify-items: center; gap: 52px; background: #1a1a1a; padding: 46px 20px 58px; text-align: center; }
 .monricx-philosophy p:first-child { width: 410px; margin: 0; color: #d4af37; font-family: 'Roboto Slab', Georgia, serif; font-size: 52px; line-height: 67.6px; }
 .monricx-philosophy p:last-child { width: min(1020px, calc(100vw - 40px)); margin: 0; color: #d4af37; font-family: 'Libre Baskerville', Georgia, serif; font-size: 48px; line-height: 80.16px; }
 
-.monricx-product-section { min-height: 430px; max-width: 1280px; margin: 0 auto; padding: 52px 16px 100px; background: #f7f2f3; }
+.monricx-product-section { min-height: 430px; max-width: 1280px; margin: 0 auto; padding: 52px 16px 100px; background: #f7f2f3; color: #1a1a1a; }
 .monricx-product-section--home { max-width: none; padding: 50px 16px; }
 .monricx-product-section--shop { min-height: 520px; padding-top: 80px; }
 .monricx-product-toolbar { display: flex; min-height: 110px; align-items: flex-start; justify-content: flex-end; gap: 22px; }
@@ -156,7 +160,8 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-product-card:hover img { transform: scale(1.025); }
 .monricx-product-card h2 { min-height: 25.2px; margin: 20px 0 8px; font-family: 'Bodoni Moda', Georgia, serif; font-size: 18px; font-weight: 400; line-height: 25.2px; text-align: center; }
 .monricx-product-card__price { display: flex; min-height: 28px; justify-content: center; gap: 8px; margin: 0; font-family: 'Manrope', sans-serif; font-size: 16px; line-height: 28px; }
-.monricx-product-card__price span { color: #777; text-decoration: line-through; }
+.monricx-product-card__price span { opacity: .4; text-decoration: line-through; }
+.monricx-product-card__price strong { font-weight: 400; }
 .monricx-product-card > form button { display: flex; min-width: 103px; min-height: 50px; align-items: center; justify-content: center; margin: 8px auto 0; border: 1px solid #000; border-radius: 999px; padding: 15px 16px; font-family: 'Manrope', sans-serif; font-size: 14px; line-height: 18.2px; }
 .monricx-product-card > form button:disabled { cursor: not-allowed; opacity: .45; }
 .monricx-home-pagination { display: flex; width: 180px; height: 36px; align-items: center; justify-content: space-between; margin: 16px auto 0; font-family: 'Manrope', sans-serif; font-size: 13px; }
@@ -217,7 +222,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-reviews-empty h2 { margin: 0 0 32px; font-family: 'Bodoni Moda', Georgia, serif; font-size: 28px; font-weight: 400; line-height: 37.8px; }
 .monricx-reviews-empty button { justify-self: center; border-radius: 999px; background: #000; padding: 16px 28px; color: #f7f2f3; font-family: 'Manrope', sans-serif; font-size: 14px; line-height: 18.2px; }
 
-.monricx-checkout-body { margin: 0; background: #fff; color: #202020; font-family: 'DM Sans', sans-serif; }
+.monricx-checkout-body { margin: 0; background: #fff; color: #202020; font-family: 'Manrope', sans-serif; }
 .monricx-checkout-header { display: grid; height: 134px; place-content: center; border-bottom: 1px solid #e2e2e2; background: #fff; }
 .monricx-checkout-header a, .monricx-checkout-header img { width: 86px; height: 86px; }
 .monricx-checkout { display: grid; min-height: calc(100vh - 134px); grid-template-columns: minmax(0,59.2%) minmax(420px,40.8%); }
@@ -260,7 +265,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-checkout-product__image img { width: 100%; height: 100%; border-radius: 8px; object-fit: cover; }
 .monricx-checkout-product__image span { position: absolute; top: -8px; right: -8px; display: grid; width: 28px; height: 28px; place-content: center; border-radius: 50%; background: #797d82; color: #fff; font-size: 12px; }
 .monricx-checkout-product h2 { margin: 0; font-size: 15px; font-weight: 700; line-height: 1.45; }
-.monricx-checkout-product > strong { font-size: 14px; }
+.monricx-checkout-product > strong { font-size: 14px; font-weight: 400; }
 .monricx-discount-field { display: grid; margin-top: 28px; grid-template-columns: minmax(0,1fr) 95px; gap: 8px; }
 .monricx-discount-field input, .monricx-discount-field button { height: 61px; border: 1px solid #dadada; border-radius: 14px; background: #fff; padding: 0 17px; font-size: 14px; }
 .monricx-discount-field button { background: #ececec; color: #999; font-weight: 700; }
@@ -280,22 +285,22 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-order-confirmation > a { margin-top: 32px; border-radius: 999px; background: #080808; padding: 14px 32px; color: #fff; }
 
 .monricx-categories { min-height: 1354px; background: #f7f2f3; padding: 78px 20px 62px; }
-.monricx-categories__premium { max-width: 1224px; margin: 0 auto; font-family: 'Manrope', sans-serif; font-size: 32px; line-height: 41.6px; text-align: center; }
-.monricx-categories > h2 { max-width: 1224px; margin: 14px auto 53px; font-family: 'Bodoni Moda', Georgia, serif; font-size: 16px; font-weight: 400; line-height: 20.8px; text-align: center; }
+.monricx-categories__premium { max-width: 1224px; margin: 0 auto; font-family: 'Bodoni Moda', Georgia, serif; font-size: 32px; line-height: 41.6px; text-align: center; }
+.monricx-categories > h2 { max-width: 1224px; margin: 14px auto 53px; font-family: 'Bodoni Moda', Georgia, serif; font-size: 28px; font-weight: 400; line-height: 36.4px; text-align: center; }
 .monricx-category-grid { display: grid; max-width: 1224px; margin: 0 auto; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 170px 12px; }
 .monricx-category-card { position: relative; aspect-ratio: 400 / 479; overflow: hidden; border-radius: 20px; background: #111; color: #f7f2f3; }
 .monricx-category-card > img, .monricx-category-card > picture, .monricx-category-card > picture img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.monricx-category-card__shade { display: none; }
+.monricx-category-card__shade { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(0,0,0,.55), transparent); }
 .monricx-category-card__content { position: absolute; inset: auto 43px 48px 40px; z-index: 2; }
-.monricx-category-card h3 { margin: 0; font-family: 'Bodoni Moda', Georgia, serif; font-size: 20px; line-height: 26px; }
+.monricx-category-card h3 { margin: 0; font-family: 'Bodoni Moda', Georgia, serif; font-size: 20px; font-weight: 400; line-height: 26px; }
 .monricx-category-card h3 { margin-left: 2px; }
 .monricx-category-card p { min-height: 28px; margin: 14px 0 0 1px; font-family: 'Manrope', sans-serif; font-size: 16px; line-height: 28px; }
-.monricx-category-card a { display: inline-flex; min-width: 173px; min-height: 50px; align-items: center; justify-content: center; margin-top: 18px; border: 1px solid #f7f2f3; border-radius: 28px; padding: 0 24px; font-family: Inter, 'Manrope', sans-serif; font-size: 16px; font-weight: 500; text-align: center; }
-.monricx-category-card:nth-child(n+3) h3 strong { font-weight: 900; }
+.monricx-category-card a { display: inline-flex; min-width: 173px; min-height: 50px; align-items: center; justify-content: center; margin-top: 18px; border: 1px solid #f7f2f3; border-radius: 28px; padding: 0 24px; font-family: 'Manrope', sans-serif; font-size: 16px; font-weight: 500; text-align: center; }
+.monricx-category-card:nth-child(n+3) h3 strong { font-weight: 400; }
 .monricx-category-card:nth-child(4) .monricx-category-card__content { bottom: 131px; }
 .monricx-category-card:nth-child(4) p { margin-top: 0; }
 .monricx-category-card:nth-child(4) a { margin-top: 16px; }
-.monricx-category-card a:hover { background: #fff; color: #111; }
+.monricx-category-card a:hover { background: transparent; color: #f7f2f3; border-color: #f7f2f3; }
 .monricx-premium-heading { display: grid; min-height: 300px; place-content: center; background: #080808; padding: 40px 20px; color: #fff; text-align: center; }
 .monricx-premium-heading h1 { font-family: 'Bodoni Moda', Georgia, serif; font-size: clamp(42px, 6vw, 76px); font-weight: 400; }
 
@@ -304,6 +309,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 }
 
 .monricx-dark-page { background: #080808; color: #8f8b8b; }
+.monricx-dark-page h1 strong, .monricx-dark-page h2 strong, .monricx-dark-page h3 strong, .monricx-dark-page .monricx-kicker strong { font-weight: inherit; }
 .monricx-kicker { color: #908b80; font-size: 14px; }
 .monricx-about-page { padding: 150px 20px 130px; }
 .monricx-about-split { display: grid; max-width: 1140px; margin: 0 auto 130px; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 85px; }
@@ -361,15 +367,15 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-footer { position: relative; min-height: 644px; overflow: hidden; background: #080808; padding: 0; color: #f7f2f3; }
 .monricx-footer__grid { position: relative; display: block; width: min(1064px, 100%); height: 644px; margin: 0 auto; }
 .monricx-footer__grid > div:first-child { position: absolute; top: 24px; left: 0; width: 1064px; }
-.monricx-footer h1 { margin: 0; font-family: 'Bodoni Moda', Georgia, serif; font-size: 66px; font-weight: 400; line-height: 66px; }
+.monricx-footer h1 { margin: 0; font-family: 'Bodoni Moda', Georgia, serif; font-size: 66px; font-weight: 400; line-height: 66px; letter-spacing: -0.025em; }
 .monricx-footer__tagline { margin-top: 2px; color: #f4e7c5; font-family: 'Bodoni Moda', Georgia, serif; font-size: 48px; line-height: 62.4px; }
-.monricx-footer__contact { position: absolute; top: 203px; right: 0; width: 455px; color: #f1f1f1; font-family: 'Manrope', sans-serif; font-size: 13px; line-height: 19.5px; text-align: right; }
-.monricx-footer__contact p:nth-child(n+3) { color: #f7f2f3; font-size: 16px; line-height: 28px; }
+.monricx-footer__contact { position: absolute; top: 203px; right: 0; width: 455px; color: #f1f1f1; font-family: 'Manrope', sans-serif; font-size: 16px; line-height: 28px; text-align: right; }
+.monricx-footer__contact p:nth-child(n+3) { color: #f7f2f3; }
 .monricx-footer__contact p:nth-child(3), .monricx-footer__contact p:nth-child(5) { margin-top: 8px; }
-.monricx-footer__contact p:nth-child(4) span { color: #fff; font-family: Roboto, sans-serif; }
+.monricx-footer__contact p:nth-child(4) span { color: #fff; }
 .monricx-footer__links { position: absolute; top: 154px; left: -2px; width: 200px; font-family: 'Manrope', sans-serif; font-size: 16px; line-height: 28px; }
 .monricx-footer__contact p:first-child { margin-bottom: 8px; font-weight: 400; }
-.monricx-footer__links p:first-child { margin-bottom: 11px; color: #f4e7c5; font-size: 13px; font-weight: 400; line-height: 19.5px; }
+.monricx-footer__links p:first-child { margin-bottom: 11px; }
 .monricx-footer__links p + p { margin-top: 8px; }
 .monricx-footer__bottom { position: absolute; top: 434px; left: calc(50% - 543px); display: block; width: 1064px; margin: 0; border-top: 1px solid rgba(255,255,255,.45); padding-top: 14px; font-family: 'Bodoni Moda', Georgia, serif; font-size: 13px; line-height: 19.5px; }
 .monricx-footer__socials { position: absolute; top: 538px; left: calc(50% - 490px); display: grid; width: 200px; margin: 0; gap: 0; }
@@ -401,7 +407,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
     .monricx-header-actions { justify-self: end; }
     .monricx-cart-button { width: 27px; height: 33px; margin: 0; }
     .monricx-mobile-navigation { display: grid; gap: 1px; border-top: 1px solid rgba(255,255,255,.12); padding: 10px 20px 20px; }
-    .monricx-mobile-navigation a { padding: 11px 8px; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .monricx-mobile-navigation a { padding: 11px 8px; border-bottom: 1px solid rgba(255,255,255,.08); font-family: 'Manrope', sans-serif; font-size: 14px; }
     .monricx-hero { min-height: 577px; }
     .monricx-hero h1 { margin-top: 45px; }
     .monricx-hero__intro { margin-top: 45px; }
@@ -446,7 +452,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
     .monricx-offer-bar { padding-block: 6px; }
     .monricx-hero { min-height: 577px; align-items: flex-start; }
     .monricx-hero__content { width: min(328px, calc(100% - 48px)); padding: 21px 0 0; transform: none; }
-    .monricx-hero__brand { font-size: 40px; line-height: 52px; letter-spacing: -1px; transform: translateY(4px); }
+    .monricx-hero__brand { font-size: 40px; line-height: 52px; transform: translateY(4px); }
     .monricx-hero h1 { margin-top: 38px; font-size: 40px; line-height: 50px; }
     .monricx-hero__intro, .monricx-hero__limited { font-size: 16px; line-height: 28px; letter-spacing: normal; }
     .monricx-hero__intro { margin-top: 42px; }
@@ -496,7 +502,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
     .monricx-gallery-strip img { width: 156px; height: 156px; }
     .monricx-categories { height: 2243px; min-height: 2243px; padding: 123px 24px 122px; }
     .monricx-categories__premium { display: block; font-size: 16px; line-height: 20.8px; }
-    .monricx-categories > h2 { margin: 0 auto 40px; font-size: 16px; line-height: 20.8px; }
+    .monricx-categories > h2 { margin: 0 auto 40px; font-size: 24px; line-height: 31.2px; }
     .monricx-category-grid { grid-template-columns: 1fr; gap: 19px; }
     .monricx-category-card { aspect-ratio: auto; min-height: 464px; border-radius: 25px; }
     .monricx-category-card:nth-child(2) { margin-top: 12px; }
@@ -533,7 +539,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
     .monricx-footer h1 { font-size: 66px; line-height: 66px; text-align: center; }
     .monricx-footer__tagline { margin-top: 8px; font-size: 24px; line-height: 31.2px; text-align: center; }
     .monricx-footer__contact { position: absolute; top: 260px; left: 0; width: 328px; font-size: 13px; line-height: 19.5px; text-align: left; }
-    .monricx-footer__contact p:nth-child(n+3) { color: #f1f1f1; font-size: 13px; line-height: 19.5px; }
+    .monricx-footer__contact p:nth-child(n+3) { color: #f7f2f3; font-size: 13px; line-height: 19.5px; }
     .monricx-footer__contact p:nth-child(3), .monricx-footer__contact p:nth-child(5) { margin-top: 0; }
     .monricx-footer__links { position: absolute; top: 463px; left: 0; width: 200px; font-size: 16px; line-height: 28px; }
     .monricx-footer__links p:first-child { margin-bottom: 7px; font-size: 18px; line-height: 27px; }

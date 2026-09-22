@@ -19,7 +19,7 @@
             <option value="published" @selected($status === 'published')>Published</option>
             <option value="draft" @selected($status === 'draft')>Draft</option>
         </select>
-        <button class="rounded-lg border border-black/20 px-5 py-2.5" type="submit">Filter</button>
+        <button class="rounded-lg border border-black/20 px-5 py-2.5 text-sm" type="submit">Filter</button>
     </form>
 
     <section class="mt-6 overflow-hidden rounded-xl bg-white shadow-sm">

@@ -24,12 +24,12 @@
         <div class="border-b border-black/10 px-6 py-5"><h2 class="font-semibold">Recent orders</h2></div>
         <div class="overflow-x-auto">
             <table class="w-full min-w-[720px] text-left text-sm">
-                <thead class="bg-black/[0.03] text-black/55"><tr><th class="px-6 py-3">Order</th><th class="px-6 py-3">Customer</th><th class="px-6 py-3">Payment</th><th class="px-6 py-3">Total</th><th class="px-6 py-3">Created</th></tr></thead>
+                <thead class="bg-black/[0.03] text-black/55"><tr><th class="px-5 py-3">Order</th><th class="px-5 py-3">Customer</th><th class="px-5 py-3">Payment</th><th class="px-5 py-3">Total</th><th class="px-5 py-3">Created</th></tr></thead>
                 <tbody class="divide-y divide-black/10">
                     @forelse ($recentOrders as $order)
-                        <tr><td class="px-6 py-4"><a class="underline decoration-black/20 underline-offset-4" href="{{ route('admin.orders.show', $order) }}">{{ $order->order_number }}</a></td><td class="px-6 py-4">{{ $order->customer_name }}</td><td class="px-6 py-4">{{ $order->payment_status }}</td><td class="px-6 py-4">₹{{ number_format($order->total_paise / 100, 2) }}</td><td class="px-6 py-4">{{ $order->created_at->format('d M Y, H:i') }}</td></tr>
+                        <tr><td class="px-5 py-4"><a class="underline decoration-black/20 underline-offset-4" href="{{ route('admin.orders.show', $order) }}">{{ $order->order_number }}</a></td><td class="px-5 py-4">{{ $order->customer_name }}</td><td class="px-5 py-4">{{ $order->payment_status }}</td><td class="px-5 py-4">₹{{ number_format($order->total_paise / 100, 2) }}</td><td class="px-5 py-4">{{ $order->created_at->format('d M Y, H:i') }}</td></tr>
                     @empty
-                        <tr><td colspan="5" class="px-6 py-10 text-center text-black/50">No orders</td></tr>
+                        <tr><td colspan="5" class="px-6 py-12 text-center text-black/50">No orders</td></tr>
                     @endforelse
                 </tbody>
             </table>

@@ -24,7 +24,7 @@
                     <p class="text-sm font-semibold uppercase tracking-wide text-amber-900">Copy these credentials now</p>
                     <p class="mt-1 text-sm text-amber-900/75">The generated password cannot be displayed again.</p>
                 </div>
-                <button type="button" x-on:click="copyCredentials" class="rounded-lg bg-[#080808] px-4 py-2 text-sm text-white">
+                <button type="button" x-on:click="copyCredentials" class="rounded-lg bg-[#080808] px-4 py-2.5 text-sm text-white">
                     <span x-show="!copied">Copy credentials</span>
                     <span x-cloak x-show="copied">Copied</span>
                 </button>
@@ -40,7 +40,7 @@
 
     <div class="mt-8 grid gap-8 lg:grid-cols-[minmax(0,420px)_1fr]">
         <section class="rounded-xl bg-white p-6 shadow-sm">
-            <h2 class="text-lg font-semibold">Generate access</h2>
+            <h2 class="font-semibold">Generate access</h2>
             <form method="post" action="{{ route('admin.temporary-access.store') }}" class="mt-6 space-y-5">
                 @csrf
 
@@ -96,7 +96,7 @@
                     @error('permissions') <p class="mt-2 text-sm text-red-700">{{ $message }}</p> @enderror
                 </fieldset>
 
-                <button type="submit" class="w-full rounded-lg bg-[#080808] px-5 py-3 text-white">Generate secure password</button>
+                <button type="submit" class="w-full rounded-lg bg-[#080808] px-5 py-3 text-sm text-white">Generate secure password</button>
             </form>
         </section>
 
@@ -147,7 +147,7 @@
                                 </td>
                             </tr>
                         @empty
-                            <tr><td colspan="5" class="px-6 py-10 text-center text-black/50">No temporary access has been issued.</td></tr>
+                            <tr><td colspan="5" class="px-6 py-12 text-center text-black/50">No temporary access has been issued.</td></tr>
                         @endforelse
                     </tbody>
                 </table>

@@ -5,7 +5,7 @@
         <section class="monricx-about-split">
             <div class="monricx-about-copy">
                 <p class="monricx-kicker">MONRICX ARCHITECTURE</p>
-                <h1>Timeless Luxury<br>Modern Elegance..</h1>
+                <h1>Timeless Luxury<br>Modern Elegance.</h1>
                 <p>MONRICX creates premium jewellery designed for modern lifestyles. Every piece is carefully selected to combine timeless elegance, exceptional quality, and everyday comfort.</p>
             </div>
             <img src="{{ asset('images/monricx/about-ring.jpg') }}" alt="Extreme macro close-up of a heavy-gauge gold ring on a finger, focusing on the brushed champagne texture and sharp architectural edges under dramatic low-key lighting.">
@@ -30,7 +30,7 @@
         <section class="monricx-about-features">
             <article>
                 <p class="monricx-kicker">PREMIUM QUALITY</p>
-                <p>At MONRICX, we carefully select every jewellery piece for its premium quality, elegant design, and lasting finish. Our commitment is to provide stylish, affordable, and comfortable fashion jewellery that adds timeless elegance to every occasion..</p>
+                <p>At MONRICX, we carefully select every jewellery piece for its premium quality, elegant design, and lasting finish. Our commitment is to provide stylish, affordable, and comfortable fashion jewellery that adds timeless elegance to every occasion.</p>
             </article>
             <article>
                 <h2>Timeless Elegance</h2>

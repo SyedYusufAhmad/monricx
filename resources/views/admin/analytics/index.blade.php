@@ -10,7 +10,7 @@
         <form method="get" class="flex flex-wrap items-end gap-3 rounded-xl bg-white p-4 shadow-sm">
             <label class="text-xs text-black/55">From<input type="date" name="from" value="{{ $from->toDateString() }}" class="mt-1 block rounded-lg border border-black/20 px-3 py-2 text-sm text-black"></label>
             <label class="text-xs text-black/55">To<input type="date" name="to" value="{{ $to->toDateString() }}" class="mt-1 block rounded-lg border border-black/20 px-3 py-2 text-sm text-black"></label>
-            <button type="submit" class="rounded-lg bg-[#080808] px-4 py-2.5 text-sm text-white">Apply</button>
+            <button type="submit" class="rounded-lg border border-black/20 px-5 py-2.5 text-sm">Apply</button>
         </form>
     </div>
 
@@ -41,7 +41,7 @@
                 @forelse ($topPages as $path => $views)
                     <div class="flex items-center justify-between gap-5 px-6 py-4"><span class="truncate font-mono text-xs">{{ $path }}</span><strong>{{ number_format($views) }}</strong></div>
                 @empty
-                    <p class="px-6 py-10 text-center text-black/50">No page views in this period.</p>
+                    <p class="px-6 py-12 text-center text-black/50">No page views in this period.</p>
                 @endforelse
             </div>
         </section>
