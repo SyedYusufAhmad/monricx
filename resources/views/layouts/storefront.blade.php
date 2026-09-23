@@ -167,7 +167,7 @@
         <div class="monricx-footer__grid">
             <div>
                 <h1>MONRICX</h1>
-                <p class="monricx-footer__tagline"><strong>Luxury Style</strong><br><strong>Exclusive Designs</strong></p>
+                <p class="monricx-footer__tagline"><strong>Luxury Style</strong> <strong>Exclusive Designs</strong></p>
             </div>
             <div class="monricx-footer__contact">
                 <p>CONTACT US</p>

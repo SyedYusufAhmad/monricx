@@ -43,15 +43,15 @@
             </ul>
         </section>
         <section>
-            <h1>Cancellation Policy</h1>
-            <h2>Before Shipment</h2><p>Orders can be cancelled before they are shipped.</p>
-            <h2>After Shipment</h2><p>Orders cannot be cancelled once they have been dispatched.</p>
-            <h2>Forced Cancellation</h2><p>If an order is cancelled or rejected after shipment, only the product value will be issued as <strong>Store Credit</strong> after deducting applicable shipping charges.</p>
+            <h2>Cancellation Policy</h2>
+            <h3>Before Shipment</h3><p>Orders can be cancelled before they are shipped.</p>
+            <h3>After Shipment</h3><p>Orders cannot be cancelled once they have been dispatched.</p>
+            <h3>Forced Cancellation</h3><p>If an order is cancelled or rejected after shipment, only the product value will be issued as <strong>Store Credit</strong> after deducting applicable shipping charges.</p>
             <p><strong>Please Note:</strong></p>
             <ul><li>Shipping charges are non-refundable.</li><li>Store Credit can be used for future purchases on MONRICX.</li></ul>
         </section>
         <section>
-            <h1>Need Assistance?</h1>
+            <h2>Need Assistance?</h2>
             <p>If you have any questions regarding your order, feel free to contact us.</p>
             <p><strong>WhatsApp:</strong> +91 8791627686</p>
             <p><strong>Email:</strong> <a href="mailto:monricxapp@gmail.com">monricxapp@gmail.com</a></p>
