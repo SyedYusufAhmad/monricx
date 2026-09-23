@@ -171,7 +171,7 @@
             </div>
             <div class="monricx-footer__contact">
                 <p>CONTACT US</p>
-                <p>(Mon to Sat 12 AM to 6 PM)</p>
+                <p>(Mon to Sat 12:00 PM to 6 PM)</p>
                 <p>Email: MONRICXAPP@gmail.com</p>
                 <p>Whatsapp : +91 8791627686 <span>(Avg reply time: 3h)</span></p>
                 <p>Address: Salek Vihar, Shamli, UP, India</p>
