@@ -16,7 +16,7 @@
       @if (session('cart_open')) x-init="$nextTick(() => cartOpen = true)" @endif>
     <div class="monricx-shipping-bar"><strong>🚚 Free Shipping On Orders Above ₹399</strong></div>
 
-    <header class="monricx-header" x-data="{ menuOpen: false, shopOpen: false }">
+    <header class="monricx-header" x-data="{ menuOpen: false, shopOpen: false, mobileShopOpen: false }">
         <div class="monricx-header__inner">
             <button class="monricx-menu-button" type="button" aria-label="Menu" :aria-expanded="menuOpen" @click="menuOpen = !menuOpen">
                 <span></span><span></span><span></span>
@@ -63,7 +63,18 @@
         </div>
         <nav class="monricx-mobile-navigation" x-cloak x-show="menuOpen" x-transition aria-label="Mobile navigation">
             <a href="{{ route('home') }}">Home</a>
-            <a href="{{ route('shop') }}">Shop</a>
+            <div class="monricx-mobile-shop">
+                <a href="{{ route('shop') }}">Shop</a>
+                <button type="button" class="monricx-mobile-shop-trigger" aria-label="Show shop categories" :aria-expanded="mobileShopOpen" @click="mobileShopOpen = !mobileShopOpen">
+                    <svg viewBox="0 0 12 8" aria-hidden="true"><path d="m1 1 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+                </button>
+            </div>
+            <div class="monricx-mobile-shop-menu" x-cloak x-show="mobileShopOpen" x-transition>
+                <a href="/rings">Rings</a>
+                <a href="/earings">Earing</a>
+                <a href="/necklace-and-pendants">Necklaces &amp; Pendants</a>
+                <a href="/bracelets">Bracelets</a>
+            </div>
             <a href="{{ route('privacy-policy') }}">Privacy policy</a>
             <a href="{{ route('refund-policy') }}">Refund policy</a>
             <a href="{{ route('faq') }}">FAQ</a>
