@@ -297,9 +297,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-category-card p { min-height: 28px; margin: 14px 0 0 1px; font-family: 'Manrope', sans-serif; font-size: 16px; line-height: 28px; }
 .monricx-category-card a { display: inline-flex; min-width: 173px; min-height: 50px; align-items: center; justify-content: center; margin-top: 18px; border: 1px solid #f7f2f3; border-radius: 28px; padding: 0 24px; font-family: 'Manrope', sans-serif; font-size: 16px; font-weight: 500; text-align: center; }
 .monricx-category-card:nth-child(n+3) h3 strong { font-weight: 400; }
-.monricx-category-card:nth-child(4) .monricx-category-card__content { bottom: 131px; }
-.monricx-category-card:nth-child(4) p { margin-top: 0; }
-.monricx-category-card:nth-child(4) a { margin-top: 16px; }
+.monricx-category-card:nth-child(4) .monricx-category-card__content { bottom: 4px; }
 .monricx-category-card a:hover { background: transparent; color: #f7f2f3; border-color: #f7f2f3; }
 .monricx-premium-heading { display: grid; min-height: 300px; place-content: center; background: #080808; padding: 40px 20px; color: #fff; text-align: center; }
 .monricx-premium-heading h1 { font-family: 'Bodoni Moda', Georgia, serif; font-size: clamp(42px, 6vw, 76px); font-weight: 400; }
@@ -373,7 +371,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-footer__contact p:nth-child(n+3) { color: #f7f2f3; }
 .monricx-footer__contact p:nth-child(3), .monricx-footer__contact p:nth-child(5) { margin-top: 8px; }
 .monricx-footer__contact p:nth-child(4) span { color: #fff; }
-.monricx-footer__links { position: absolute; top: 154px; left: -2px; width: 200px; font-family: 'Manrope', sans-serif; font-size: 16px; line-height: 28px; }
+.monricx-footer__links { width: 200px; margin: 24px 0 0 -2px; font-family: 'Manrope', sans-serif; font-size: 16px; line-height: 28px; }
 .monricx-footer__contact p:first-child { margin-bottom: 8px; font-weight: 400; }
 .monricx-footer__links p:first-child { margin-bottom: 11px; }
 .monricx-footer__links p + p { margin-top: 8px; }
@@ -548,7 +546,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
     .monricx-footer__contact { position: absolute; top: 260px; left: 0; width: 328px; font-size: 13px; line-height: 19.5px; text-align: left; }
     .monricx-footer__contact p:nth-child(n+3) { color: #f7f2f3; font-size: 13px; line-height: 19.5px; }
     .monricx-footer__contact p:nth-child(3), .monricx-footer__contact p:nth-child(5) { margin-top: 0; }
-    .monricx-footer__links { position: absolute; top: 463px; left: 0; width: 200px; font-size: 16px; line-height: 28px; }
+    .monricx-footer__links { position: absolute; top: 402px; left: 0; width: 200px; font-size: 16px; line-height: 28px; }
     .monricx-footer__links p:first-child { margin-bottom: 7px; font-size: 18px; line-height: 27px; }
     .monricx-footer__bottom { position: absolute; top: 699px; left: 24px; display: flex; width: 328px; flex-direction: column; align-items: center; gap: 34px; margin: 0; border: 0; padding: 0; text-align: center; }
     .monricx-footer__bottom p:last-child { order: -1; }

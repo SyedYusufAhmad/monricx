@@ -179,6 +179,14 @@
             <div>
                 <h1>MONRICX</h1>
                 <p class="monricx-footer__tagline"><strong>Luxury Style</strong> <strong>Exclusive Designs</strong></p>
+                <div class="monricx-footer__links">
+                    <p>Quick Links</p>
+                    <p><a href="{{ route('home') }}">Home</a></p>
+                    <p><a href="{{ route('shop') }}">Shop</a></p>
+                    <p><a href="{{ route('about') }}">About Us</a></p>
+                    <p><a href="{{ route('privacy-policy') }}">Privacy Policy</a></p>
+                    <p><a href="{{ route('refund-policy') }}">Return Policy</a></p>
+                </div>
             </div>
             <div class="monricx-footer__contact">
                 <p>CONTACT US</p>
@@ -186,14 +194,6 @@
                 <p>Email: MONRICXAPP@gmail.com</p>
                 <p>Whatsapp : +91 8791627686 <span>(Avg reply time: 3h)</span></p>
                 <p>Address: Salek Vihar, Shamli, UP, India</p>
-            </div>
-            <div class="monricx-footer__links">
-                <p>Quick Links</p>
-                <p><a href="{{ route('home') }}">Home</a></p>
-                <p><a href="{{ route('shop') }}">Shop</a></p>
-                <p><a href="{{ route('about') }}">About Us</a></p>
-                <p><a href="{{ route('privacy-policy') }}">Privacy Policy</a></p>
-                <p><a href="{{ route('refund-policy') }}">Return Policy</a></p>
             </div>
         </div>
         <div class="monricx-footer__bottom">
