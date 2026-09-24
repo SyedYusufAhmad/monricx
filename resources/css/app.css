@@ -376,10 +376,8 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-footer__links p:first-child { margin-bottom: 11px; }
 .monricx-footer__links p + p { margin-top: 8px; }
 .monricx-footer__bottom { position: absolute; top: 434px; left: calc(50% - 543px); display: block; width: 1064px; margin: 0; border-top: 1px solid rgba(255,255,255,.45); padding-top: 14px; font-family: 'Bodoni Moda', Georgia, serif; font-size: 13px; line-height: 19.5px; }
-.monricx-footer__socials { position: absolute; top: 538px; left: calc(50% - 490px); display: grid; width: 200px; margin: 0; gap: 0; }
-.monricx-footer__socials a { display: grid; width: 200px; place-content: start center; }
-.monricx-footer__socials a:first-child { height: 63px; }
-.monricx-footer__socials a:last-child { height: 43px; }
+.monricx-footer__socials { position: absolute; top: 545px; left: calc(50% - 490px); display: flex; width: auto; margin: 0; gap: 18px; align-items: center; }
+.monricx-footer__socials a { display: grid; width: 43px; height: 43px; place-content: center; }
 .monricx-footer__socials svg { width: 43px; height: 43px; }
 .monricx-back-to-top { position: fixed; right: 28px; bottom: 28px; z-index: 20; display: grid; width: 52px; height: 52px; place-content: center; border-radius: 50%; background: #393939; color: #fff; box-shadow: 0 6px 18px rgba(0,0,0,.25); }
 .monricx-back-to-top svg { width: 20px; height: 20px; }
