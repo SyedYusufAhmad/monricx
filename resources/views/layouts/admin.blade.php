@@ -15,20 +15,20 @@
         <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-5">
             <div class="flex flex-wrap items-center gap-8">
                 <a href="{{ route('admin.dashboard') }}" class="font-['Bodoni_Moda'] text-2xl text-[#f4e7c5]">MONRICX Admin</a>
-                <nav class="flex items-center gap-5 text-sm text-white/75" aria-label="Admin navigation">
-                    <a href="{{ route('admin.dashboard') }}" @class(['text-white' => request()->routeIs('admin.dashboard'), 'hover:text-white' => true])>Dashboard</a>
+                <nav class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/75" aria-label="Admin navigation">
+                    <a href="{{ route('admin.dashboard') }}" @class(['text-white' => request()->routeIs('admin.dashboard'), 'hover:text-white' => true, 'whitespace-nowrap' => true])>Dashboard</a>
                     @if (auth()->user()->canAccessAdminArea('products'))
-                        <a href="{{ route('admin.products.index') }}" @class(['text-white' => request()->routeIs('admin.products.*'), 'hover:text-white' => true])>Products</a>
+                        <a href="{{ route('admin.products.index') }}" @class(['text-white' => request()->routeIs('admin.products.*'), 'hover:text-white' => true, 'whitespace-nowrap' => true])>Products</a>
                     @endif
                     @if (auth()->user()->canAccessAdminArea('orders'))
-                        <a href="{{ route('admin.orders.index') }}" @class(['text-white' => request()->routeIs('admin.orders.*'), 'hover:text-white' => true])>Orders</a>
+                        <a href="{{ route('admin.orders.index') }}" @class(['text-white' => request()->routeIs('admin.orders.*'), 'hover:text-white' => true, 'whitespace-nowrap' => true])>Orders</a>
                     @endif
                     @if (auth()->user()->canAccessAdminArea('analytics'))
-                        <a href="{{ route('admin.analytics') }}" @class(['text-white' => request()->routeIs('admin.analytics'), 'hover:text-white' => true])>Analytics</a>
+                        <a href="{{ route('admin.analytics') }}" @class(['text-white' => request()->routeIs('admin.analytics'), 'hover:text-white' => true, 'whitespace-nowrap' => true])>Analytics</a>
                     @endif
                     @if (auth()->user()->role === 'super_admin')
-                        <a href="{{ route('admin.temporary-access.index') }}" @class(['text-white' => request()->routeIs('admin.temporary-access.*'), 'hover:text-white' => true])>Temporary access</a>
-                        <a href="{{ route('admin.account.edit') }}" @class(['text-white' => request()->routeIs('admin.account.*'), 'hover:text-white' => true])>Account</a>
+                        <a href="{{ route('admin.temporary-access.index') }}" @class(['text-white' => request()->routeIs('admin.temporary-access.*'), 'hover:text-white' => true, 'whitespace-nowrap' => true])>Temporary access</a>
+                        <a href="{{ route('admin.account.edit') }}" @class(['text-white' => request()->routeIs('admin.account.*'), 'hover:text-white' => true, 'whitespace-nowrap' => true])>Account</a>
                     @endif
                 </nav>
             </div>
