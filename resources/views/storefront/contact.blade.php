@@ -9,9 +9,6 @@
         </section>
 
         <section class="monricx-contact-grid">
-            <div class="monricx-map">
-                <iframe title="MONRICX location" loading="lazy" src="https://www.google.com/maps?q=Salek%20Vihar%2C%20Shamli%2C%20UP%2C%20India&output=embed"></iframe>
-            </div>
             <div class="monricx-contact-hours">
                 <p class="monricx-kicker"><strong>Visit Us</strong></p>
                 <h2><strong>Customer Support Hours</strong></h2>
@@ -26,7 +23,10 @@
                 <h3>Our Commitment</h3>
                 <p>We are committed to providing premium-quality jewellery, secure shopping, fast customer support, and reliable delivery across India.</p>
             </div>
-            <h2><strong>Fast Customer Support</strong></h2>
+            <div class="monricx-contact-speciality">
+                <p class="monricx-kicker"><strong>Our Speciality</strong></p>
+                <h2><strong>Fast Customer Support</strong></h2>
+            </div>
         </section>
     </div>
 @endsection
