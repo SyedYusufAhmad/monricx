@@ -300,7 +300,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-category-card:nth-child(n+3) h3 strong { font-weight: 400; }
 .monricx-category-card:nth-child(4) .monricx-category-card__content { bottom: 4px; }
 .monricx-category-card a:hover { background: transparent; color: #f7f2f3; border-color: #f7f2f3; }
-.monricx-premium-heading { display: grid; min-height: 300px; place-content: center; background: #080808; padding: 40px 20px; color: #fff; text-align: center; }
+.monricx-premium-heading { display: grid; min-height: 300px; place-content: center; background: #080808; padding: 40px 20px; border-bottom: 1px solid rgba(212, 175, 55, 0.45); color: #fff; text-align: center; }
 .monricx-premium-heading h1 { font-family: 'Bodoni Moda', Georgia, serif; font-size: clamp(42px, 6vw, 76px); font-weight: 400; }
 
 @media (min-width: 1025px) {
