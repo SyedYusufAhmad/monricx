@@ -152,7 +152,8 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-sort-form { align-self: flex-end; }
 .monricx-product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
 .monricx-product-grid--shop { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-.monricx-product-card { min-width: 0; }
+.monricx-product-card { display: flex; flex-direction: column; min-width: 0; }
+.monricx-product-card > form { margin-top: auto; }
 .monricx-product-card__link { display: block; }
 .monricx-product-card__image { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 20%; background: #e6e1e1; }
 .monricx-product-card__image > span { position: absolute; z-index: 2; top: 8px; left: 0; background: #1d1e20; padding: 6px 12px; color: #f7f2f3; font-family: 'Manrope', sans-serif; font-size: 13px; line-height: 19.5px; }
