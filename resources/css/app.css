@@ -514,7 +514,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
     .monricx-category-card:nth-child(2) { margin-top: 12px; }
     .monricx-category-card:nth-child(3) { margin-top: 93px; }
     .monricx-category-card:nth-child(4) { margin-top: 12px; }
-    .monricx-category-card__content { inset: auto 19px 83px; text-align: center; }
+    .monricx-category-card__content { inset: auto 19px 40px; text-align: center; }
     .monricx-category-card h3 { margin-left: 0; font-size: 18px; line-height: 25.2px; }
     .monricx-category-card p { min-height: 28px; margin-top: 14px; margin-left: 0; line-height: 28px; }
     .monricx-category-card a { min-width: 194px; min-height: 56px; margin-top: 8px; font-size: 14px; line-height: 18.2px; }
