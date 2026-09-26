@@ -60,15 +60,15 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-header { position: sticky; top: 40px; z-index: 30; background: #0b0b0b; color: #f7f2f3; }
 .monricx-header__inner {
     display: grid;
-    min-height: 193px;
+    min-height: 124px;
     max-width: 1280px;
     margin: 0 auto;
-    padding: 24px 44px;
-    grid-template-columns: 150px 1fr auto;
+    padding: 14px 44px;
+    grid-template-columns: 96px 1fr auto;
     align-items: center;
-    gap: 34px;
+    gap: 24px;
 }
-.monricx-logo { display: block; width: 132px; height: 132px; }
+.monricx-logo { display: block; width: 84px; height: 84px; }
 .monricx-logo img { width: 100%; height: 100%; object-fit: cover; }
 .monricx-navigation { display: flex; align-items: center; justify-content: flex-end; gap: 44px; font-family: 'Manrope', sans-serif; font-size: 14px; white-space: nowrap; }
 .monricx-navigation > a, .monricx-shop-trigger { border-bottom: 1px solid transparent; padding: 7px 0; color: #f7f2f3; }
