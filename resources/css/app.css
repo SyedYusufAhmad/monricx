@@ -530,8 +530,8 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
     .monricx-faq-grid article { padding: 28px 20px; }
     .monricx-policy-page { padding: 110px 20px 100px; }
     .monricx-policy-page section { margin-top: 55px; }
-    .monricx-footer { min-height: 849px; padding: 0; }
-    .monricx-footer__grid { position: relative; display: block; width: 328px; height: 849px; margin: 0 auto; }
+    .monricx-footer { min-height: 920px; padding: 0; }
+    .monricx-footer__grid { position: relative; display: block; width: 328px; height: 920px; margin: 0 auto; }
     .monricx-footer__grid > div:first-child { position: absolute; top: 61px; left: 0; width: 328px; text-align: center; }
     .monricx-footer h1 { font-size: 66px; line-height: 66px; text-align: center; }
     .monricx-footer__tagline { margin-top: 8px; font-size: 24px; line-height: 31.2px; text-align: center; }
@@ -540,13 +540,12 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
     .monricx-footer__contact p:nth-child(3), .monricx-footer__contact p:nth-child(5) { margin-top: 0; }
     .monricx-footer__links { position: absolute; top: 402px; left: 0; width: 200px; font-size: 16px; line-height: 28px; }
     .monricx-footer__links p:first-child { margin-bottom: 7px; font-size: 18px; line-height: 27px; }
-    .monricx-footer__bottom { position: absolute; top: 699px; left: 24px; display: flex; width: 328px; flex-direction: column; align-items: center; gap: 34px; margin: 0; border: 0; padding: 0; text-align: center; }
+    .monricx-footer__bottom { position: absolute; top: 780px; left: 24px; display: flex; width: 328px; flex-direction: column; align-items: center; gap: 34px; margin: 0; border: 0; padding: 0; text-align: center; }
     .monricx-footer__bottom p:last-child { order: -1; }
     .monricx-footer__bottom p:last-child { line-height: 27.5px; }
-    .monricx-footer__socials { position: absolute; top: 519px; right: 71px; left: auto; display: grid; width: 63px; margin: 0; gap: 0; }
-    .monricx-footer__socials a { width: 63px; }
-    .monricx-footer__socials a { place-content: center; }
-    .monricx-footer__socials a:first-child { height: 63px; }
+    .monricx-footer__socials { position: absolute; top: 710px; right: 0; left: 0; display: flex; width: auto; margin: 0; gap: 18px; justify-content: center; align-items: center; }
+    .monricx-footer__socials a { display: grid; width: 43px; height: 43px; place-content: center; }
+    .monricx-footer__socials svg { width: 43px; height: 43px; }
     .monricx-footer__socials a:last-child { height: 43px; }
     .monricx-back-to-top { right: 16px; bottom: 16px; width: 46px; height: 46px; }
 }
