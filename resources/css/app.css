@@ -149,7 +149,6 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-search-form { height: 48px; min-width: 146px; border: 1px solid rgba(0,0,0,.12); border-radius: 26px; background: #fff; padding: 0 14px; }
 .monricx-search-form svg { width: 20px; height: 20px; flex: 0 0 auto; }
 .monricx-search-form input { width: 105px; border: 0; outline: 0; background: transparent; font-family: 'Bodoni Moda', Georgia, serif; font-size: 15px; }
-.monricx-sort-form { align-self: flex-end; }
 .monricx-product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
 .monricx-product-grid--shop { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .monricx-product-card { display: flex; flex-direction: column; min-width: 0; }
@@ -471,7 +470,8 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
     .monricx-philosophy p:last-child { width: min(322px, calc(100vw - 48px)); font-size: 18px; line-height: 31.68px; }
     .monricx-product-section { padding: 35px 14px 70px; }
     .monricx-product-toolbar { min-height: 130px; flex-direction: column; align-items: stretch; }
-    .monricx-product-toolbar--home { flex-direction: row; align-items: flex-start; }
+    .monricx-product-toolbar--home { flex-direction: row; align-items: flex-start; flex-wrap: nowrap; }
+    .monricx-product-toolbar--home select { width: 150px; }
     .monricx-product-toolbar form { justify-content: flex-end; }
     .monricx-search-form { align-self: flex-end; }
     .monricx-sort-form { align-self: flex-end; }
