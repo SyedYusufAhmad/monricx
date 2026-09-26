@@ -32,7 +32,6 @@
                         <svg viewBox="0 0 12 8" aria-hidden="true"><path d="m1 1 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
                     </button>
                     <div class="monricx-shop-menu" x-cloak x-show="shopOpen" x-transition>
-                        <a href="{{ route('shop') }}">Shop</a>
                         <a href="/rings">Rings</a>
                         <a href="/earings">Earing</a>
                         <a href="/necklace-and-pendants">Necklaces &amp; Pendants</a>
