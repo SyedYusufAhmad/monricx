@@ -7,7 +7,7 @@
     <title>{{ $title ?? 'MONRICX' }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600;6..96,700;6..96,900&family=Libre+Baskerville:ital,wght@1,700&family=Manrope:wght@400;500;600;700&family=Roboto+Slab:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@1,700&family=Manrope:wght@400;500;600;700&family=Roboto+Slab:wght@400&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-[#f8f5f6] text-[#1d1e20] antialiased monricx-site-body"

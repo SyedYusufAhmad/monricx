@@ -7,7 +7,7 @@
 
 @theme {
     --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
-    --font-display: 'Bodoni Moda', Georgia, serif;
+    --font-display: 'Jost', 'Manrope', sans-serif;
     --font-action: 'Manrope', ui-sans-serif, system-ui, sans-serif;
     --color-monricx-black: #080808;
     --color-monricx-cream: #eadcba;
@@ -37,7 +37,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
     background: #fff;
     padding: 2px 16px;
     color: #151515;
-    font-family: 'Bodoni Moda', Georgia, serif;
+    font-family: 'Jost', 'Manrope', sans-serif;
     font-size: 18px;
     line-height: 1.25;
     text-align: center;
@@ -51,7 +51,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
     background: #fff;
     padding: 4px 16px;
     color: #c79b2e;
-    font-family: 'Bodoni Moda', Georgia, serif;
+    font-family: 'Jost', 'Manrope', sans-serif;
     font-size: clamp(20px, 2vw, 29px);
     line-height: 1.15;
     text-align: center;
@@ -122,9 +122,9 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .monricx-hero__shade { position: absolute; inset: 0; background: rgba(29,30,32,.5); }
 .monricx-hero__content { position: relative; z-index: 1; width: min(920px, calc(100% - 40px)); padding: 44px 0; transform: translateY(-22px); }
-.monricx-hero__brand { margin: 0; font-family: 'Bodoni Moda', Georgia, serif; font-size: 54px; font-weight: 700; line-height: 70.2px; }
+.monricx-hero__brand { margin: 0; font-family: 'Jost', 'Manrope', sans-serif; font-size: 54px; font-weight: 700; line-height: 70.2px; }
 .monricx-hero__brand strong { font-weight: 700; }
-.monricx-hero h1 { margin: 38px 0 0; color: #f4e7c5; font-family: 'Bodoni Moda', Georgia, serif; font-size: 48px; line-height: 60px; }
+.monricx-hero h1 { margin: 38px 0 0; color: #f4e7c5; font-family: 'Jost', 'Manrope', sans-serif; font-size: 48px; line-height: 60px; }
 .monricx-hero__intro { margin: 70px 0 0; font-family: 'Manrope', sans-serif; font-size: 28px; line-height: 36.4px; letter-spacing: -.8px; }
 .monricx-hero__limited { margin: 8px 0 0; font-family: 'Manrope', sans-serif; font-size: 28px; line-height: 36.4px; letter-spacing: -.8px; }
 .monricx-hero__actions { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; margin-top: 31px; }
@@ -148,7 +148,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-product-toolbar select { width: 200px; height: 31px; border: 1px solid #777; border-radius: 18px; background: transparent; padding: 0 14px; }
 .monricx-search-form { height: 48px; min-width: 146px; border: 1px solid rgba(0,0,0,.12); border-radius: 26px; background: #fff; padding: 0 14px; }
 .monricx-search-form svg { width: 20px; height: 20px; flex: 0 0 auto; }
-.monricx-search-form input { width: 105px; border: 0; outline: 0; background: transparent; font-family: 'Bodoni Moda', Georgia, serif; font-size: 15px; }
+.monricx-search-form input { width: 105px; border: 0; outline: 0; background: transparent; font-family: 'Jost', 'Manrope', sans-serif; font-size: 15px; }
 .monricx-product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
 .monricx-product-grid--shop { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .monricx-product-card { display: flex; flex-direction: column; min-width: 0; }
@@ -158,7 +158,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-product-card__image > span { position: absolute; z-index: 2; top: 8px; left: 12px; background: #1d1e20; padding: 6px 12px; color: #f7f2f3; font-family: 'Manrope', sans-serif; font-size: 13px; line-height: 19.5px; }
 .monricx-product-card__image img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
 .monricx-product-card:hover img { transform: scale(1.025); }
-.monricx-product-card h2 { min-height: 25.2px; margin: 20px 0 8px; font-family: 'Bodoni Moda', Georgia, serif; font-size: 18px; font-weight: 400; line-height: 25.2px; text-align: center; }
+.monricx-product-card h2 { min-height: 25.2px; margin: 20px 0 8px; font-family: 'Jost', 'Manrope', sans-serif; font-size: 18px; font-weight: 400; line-height: 25.2px; text-align: center; }
 .monricx-product-card__price { display: flex; min-height: 28px; justify-content: center; gap: 8px; margin: 0; font-family: 'Manrope', sans-serif; font-size: 16px; line-height: 28px; }
 .monricx-product-card__price span { opacity: .4; text-decoration: line-through; }
 .monricx-product-card__price strong { font-weight: 400; }
@@ -188,8 +188,8 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-product-gallery__thumbs button.is-active { border-color: #111; opacity: 1; }
 .monricx-product-gallery__thumbs img { width: 100%; height: 100%; object-fit: cover; }
 .monricx-product-info { min-width: 0; padding: 0 0 32px 80px; text-align: center; }
-.monricx-product-info h1 { width: max-content; max-width: 100%; margin: 0 auto 8px; font-family: 'Bodoni Moda', Georgia, serif; font-size: 28px; font-weight: 400; line-height: 37.8px; }
-.monricx-product-info h2 { width: max-content; max-width: 100%; margin: 0 auto 16px; font-family: 'Bodoni Moda', Georgia, serif; font-size: 18px; font-weight: 400; line-height: 25.2px; }
+.monricx-product-info h1 { width: max-content; max-width: 100%; margin: 0 auto 8px; font-family: 'Jost', 'Manrope', sans-serif; font-size: 28px; font-weight: 400; line-height: 37.8px; }
+.monricx-product-info h2 { width: max-content; max-width: 100%; margin: 0 auto 16px; font-family: 'Jost', 'Manrope', sans-serif; font-size: 18px; font-weight: 400; line-height: 25.2px; }
 .monricx-product-info__price { display: flex; width: max-content; justify-content: center; gap: 8px; margin: 0 auto; align-items: baseline; font-family: 'Manrope', sans-serif; font-size: 16px; line-height: 28px; }
 .monricx-product-info__price span { opacity: .4; text-decoration: line-through; }
 .monricx-product-info__price strong { font-weight: 400; }
@@ -210,7 +210,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-product-description ul { margin: 0; padding-left: 16px; list-style: disc inside; }
 .monricx-product-description li p { display: inline; margin-bottom: 8px; }
 .monricx-related-products { background: #fff; padding: 0 16px; color: #0b0b0b; }
-.monricx-related-products > h2 { max-width: 1224px; margin: 0 auto 32px; font-family: 'Bodoni Moda', Georgia, serif; font-size: 28px; font-weight: 400; line-height: 37.8px; text-align: center; }
+.monricx-related-products > h2 { max-width: 1224px; margin: 0 auto 32px; font-family: 'Jost', 'Manrope', sans-serif; font-size: 28px; font-weight: 400; line-height: 37.8px; text-align: center; }
 .monricx-related-products > .monricx-product-grid { max-width: 1224px; margin: 0 auto; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 24px; }
 .monricx-related-products .monricx-product-card__image { border-radius: 5%; }
 .monricx-related-products .monricx-product-card__image > span { top: 0; font-size: 16px; line-height: 28px; }
@@ -219,7 +219,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-related-pagination > * { display: grid; width: 36px; height: 36px; place-content: center; }
 .monricx-related-pagination .is-active { font-weight: 700; }
 .monricx-reviews-empty { display: grid; min-height: 0; width: min(1224px, calc(100% - 32px)); place-content: center; gap: 0; margin: 80px auto 100px; background: #fff; padding: 0; text-align: center; }
-.monricx-reviews-empty h2 { margin: 0 0 32px; font-family: 'Bodoni Moda', Georgia, serif; font-size: 28px; font-weight: 400; line-height: 37.8px; }
+.monricx-reviews-empty h2 { margin: 0 0 32px; font-family: 'Jost', 'Manrope', sans-serif; font-size: 28px; font-weight: 400; line-height: 37.8px; }
 .monricx-reviews-empty button { justify-self: center; border-radius: 999px; background: #000; padding: 16px 28px; color: #f7f2f3; font-family: 'Manrope', sans-serif; font-size: 14px; line-height: 18.2px; }
 
 .monricx-checkout-body { margin: 0; background: #fff; color: #202020; font-family: 'Manrope', sans-serif; }
@@ -279,14 +279,14 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 
 .monricx-order-confirmation { display: grid; width: min(620px, calc(100% - 40px)); min-height: calc(100vh - 134px); margin: 0 auto; place-content: center; justify-items: center; padding: 70px 0 100px; text-align: center; }
 .monricx-order-confirmation__mark { display: grid; width: 64px; height: 64px; place-content: center; border-radius: 50%; background: #080808; color: #fff; font-size: 30px; }
-.monricx-order-confirmation h1 { margin: 24px 0 16px; font-family: 'Bodoni Moda', Georgia, serif; font-size: clamp(42px, 5vw, 62px); font-weight: 400; }
+.monricx-order-confirmation h1 { margin: 24px 0 16px; font-family: 'Jost', 'Manrope', sans-serif; font-size: clamp(42px, 5vw, 62px); font-weight: 400; }
 .monricx-order-confirmation > p:not(.monricx-order-confirmation__mark) { margin: 6px 0; color: #555; }
 .monricx-order-confirmation__number { display: flex; min-width: 320px; justify-content: space-between; gap: 30px; margin-top: 37px; border-block: 1px solid #ddd; padding: 18px 0; }
 .monricx-order-confirmation > a { margin-top: 32px; border-radius: 999px; background: #080808; padding: 14px 32px; color: #fff; }
 
 .monricx-categories { min-height: 1354px; background: #f7f2f3; padding: 78px 20px 62px; }
-.monricx-categories__premium { max-width: 1224px; margin: 0 auto; font-family: 'Bodoni Moda', Georgia, serif; font-size: 32px; line-height: 41.6px; text-align: center; }
-.monricx-categories > h2 { max-width: 1224px; margin: 14px auto 53px; font-family: 'Bodoni Moda', Georgia, serif; font-size: 28px; font-weight: 400; line-height: 36.4px; text-align: center; }
+.monricx-categories__premium { max-width: 1224px; margin: 0 auto; font-family: 'Jost', 'Manrope', sans-serif; font-size: 32px; line-height: 41.6px; text-align: center; }
+.monricx-categories > h2 { max-width: 1224px; margin: 14px auto 53px; font-family: 'Jost', 'Manrope', sans-serif; font-size: 28px; font-weight: 400; line-height: 36.4px; text-align: center; }
 .monricx-category-grid { display: grid; max-width: 1224px; margin: 0 auto; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 170px 12px; }
 .monricx-category-card { position: relative; aspect-ratio: 400 / 479; overflow: hidden; border-radius: 20px; background: #111; color: #f7f2f3; }
 .monricx-category-card > img, .monricx-category-card > picture, .monricx-category-card > picture img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -294,14 +294,14 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-category-card > img, .monricx-category-card > picture img { filter: blur(1px); transform: scale(1.04); }
 .monricx-category-card__shade { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(0,0,0,.55), transparent); }
 .monricx-category-card__content { position: absolute; inset: auto 43px 48px 40px; z-index: 2; }
-.monricx-category-card h3 { margin: 0; font-family: 'Bodoni Moda', Georgia, serif; font-size: 20px; font-weight: 400; line-height: 26px; }
+.monricx-category-card h3 { margin: 0; font-family: 'Jost', 'Manrope', sans-serif; font-size: 20px; font-weight: 400; line-height: 26px; }
 .monricx-category-card h3 { margin-left: 2px; }
 .monricx-category-card p { min-height: 28px; margin: 14px 0 0 1px; font-family: 'Manrope', sans-serif; font-size: 16px; line-height: 28px; }
 .monricx-category-card a { display: inline-flex; min-width: 173px; min-height: 50px; align-items: center; justify-content: center; margin-top: 18px; border: 1px solid #f7f2f3; border-radius: 28px; padding: 0 24px; font-family: 'Manrope', sans-serif; font-size: 16px; font-weight: 500; text-align: center; }
 .monricx-category-card:nth-child(n+3) h3 strong { font-weight: 400; }
 .monricx-category-card a:hover { background: transparent; color: #f7f2f3; border-color: #f7f2f3; }
 .monricx-premium-heading { display: grid; min-height: 300px; place-content: center; background: #080808; padding: 40px 20px; border-bottom: 1px solid rgba(212, 175, 55, 0.45); color: #fff; text-align: center; }
-.monricx-premium-heading h1 { font-family: 'Bodoni Moda', Georgia, serif; font-size: clamp(42px, 6vw, 76px); font-weight: 400; }
+.monricx-premium-heading h1 { font-family: 'Jost', 'Manrope', sans-serif; font-size: clamp(42px, 6vw, 76px); font-weight: 400; }
 
 @media (min-width: 1025px) {
     .monricx-categories { height: 1354px; }
@@ -314,25 +314,25 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-about-split { display: grid; max-width: 1140px; margin: 0 auto 130px; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 85px; }
 .monricx-about-split--reverse { grid-template-columns: 1.1fr .9fr; }
 .monricx-about-split img { width: 100%; max-height: 610px; border-radius: 6px; object-fit: cover; }
-.monricx-about-copy h1, .monricx-about-copy h2 { margin: 32px 0; color: #918e8e; font-family: 'Bodoni Moda', Georgia, serif; font-size: clamp(44px, 5vw, 63px); font-weight: 400; line-height: 1.12; }
+.monricx-about-copy h1, .monricx-about-copy h2 { margin: 32px 0; color: #918e8e; font-family: 'Jost', 'Manrope', sans-serif; font-size: clamp(44px, 5vw, 63px); font-weight: 400; line-height: 1.12; }
 .monricx-about-copy h2 { font-size: clamp(40px, 4vw, 54px); }
 .monricx-about-copy p:not(.monricx-kicker) { margin: 20px 0 0; font-size: 16px; line-height: 1.8; }
 .monricx-about-gallery { display: grid; max-width: 1140px; margin: 0 auto 100px; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .monricx-about-gallery img { aspect-ratio: 1; width: 100%; object-fit: cover; }
 .monricx-about-features { display: grid; max-width: 920px; margin: 0 auto; grid-template-columns: repeat(2,1fr); gap: 80px; }
-.monricx-about-features h2 { margin: 0 0 24px; color: #918e8e; font-family: 'Bodoni Moda', Georgia, serif; font-size: 38px; font-weight: 400; }
+.monricx-about-features h2 { margin: 0 0 24px; color: #918e8e; font-family: 'Jost', 'Manrope', sans-serif; font-size: 38px; font-weight: 400; }
 .monricx-about-features p { line-height: 1.8; }
 
 .monricx-contact-page { padding-bottom: 120px; }
 .monricx-contact-intro { min-height: 440px; max-width: 1080px; margin: 0 auto; padding: 110px 20px 80px; }
-.monricx-contact-intro h1, .monricx-contact-hours h2, .monricx-contact-commitment h2 { margin: 24px 0; color: #979292; font-family: 'Bodoni Moda', Georgia, serif; font-size: clamp(40px, 5vw, 58px); line-height: 1.1; }
+.monricx-contact-intro h1, .monricx-contact-hours h2, .monricx-contact-commitment h2 { margin: 24px 0; color: #979292; font-family: 'Jost', 'Manrope', sans-serif; font-size: clamp(40px, 5vw, 58px); line-height: 1.1; }
 .monricx-contact-intro > p:last-child { margin-top: 56px; line-height: 1.7; }
 .monricx-contact-grid { max-width: 1080px; margin: 0 auto; padding: 40px 20px 120px; text-align: center; }
 .monricx-contact-hours { max-width: 640px; margin: 0 auto; }
 .monricx-contact-hours h2 { font-size: 44px; }
 .monricx-contact-hours p { margin-top: 12px; line-height: 1.7; }
 .monricx-contact-commitment { display: grid; max-width: 1080px; margin: 0 auto; grid-template-columns: 1fr 1fr; gap: 80px; padding: 0 20px; align-items: center; }
-.monricx-contact-commitment h3 { color: #aaa; font-family: 'Bodoni Moda', Georgia, serif; font-size: 34px; }
+.monricx-contact-commitment h3 { color: #aaa; font-family: 'Jost', 'Manrope', sans-serif; font-size: 34px; }
 .monricx-contact-commitment p { margin-top: 18px; line-height: 1.8; }
 .monricx-contact-commitment h2 { font-size: 44px; }
 .monricx-contact-speciality { text-align: center; }
@@ -340,25 +340,25 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-contact-speciality h2 { color: #f4e7c5; }
 
 .monricx-faq-hero { max-width: 1080px; margin: 0 auto; padding: 105px 20px 75px; }
-.monricx-faq-hero h1 { margin: 52px 0 30px; color: #979292; font-family: 'Bodoni Moda', Georgia, serif; font-size: clamp(46px, 6vw, 68px); line-height: 1.1; }
+.monricx-faq-hero h1 { margin: 52px 0 30px; color: #979292; font-family: 'Jost', 'Manrope', sans-serif; font-size: clamp(46px, 6vw, 68px); line-height: 1.1; }
 .monricx-faq-hero > p:not(.monricx-kicker) { line-height: 1.7; }
 .monricx-faq-hero > a { display: inline-flex; margin-top: 48px; background: #aaa18a; padding: 17px 45px; color: #222; }
 .monricx-faq-content { max-width: 1080px; margin: 0 auto; padding: 70px 20px 130px; }
-.monricx-faq-content > h2 { margin: 26px 0; color: #979292; font-family: 'Bodoni Moda', Georgia, serif; font-size: 46px; }
+.monricx-faq-content > h2 { margin: 26px 0; color: #979292; font-family: 'Jost', 'Manrope', sans-serif; font-size: 46px; }
 .monricx-faq-content > p:not(.monricx-kicker) { max-width: 850px; line-height: 1.75; }
 .monricx-faq-grid { display: grid; margin-top: 70px; grid-template-columns: repeat(2,1fr); border-top: 1px solid #272727; border-left: 1px solid #272727; }
 .monricx-faq-grid article { min-height: 220px; border-right: 1px solid #272727; border-bottom: 1px solid #272727; padding: 35px; }
-.monricx-faq-grid h3, .monricx-faq-help h3 { color: #aaa; font-family: 'Bodoni Moda', Georgia, serif; font-size: 25px; }
+.monricx-faq-grid h3, .monricx-faq-help h3 { color: #aaa; font-family: 'Jost', 'Manrope', sans-serif; font-size: 25px; }
 .monricx-faq-grid p { margin-top: 22px; line-height: 1.75; }
 .monricx-faq-grid a { text-decoration: underline; }
 .monricx-faq-help { margin-top: 90px; border: 1px solid #272727; padding: 45px; }
 .monricx-faq-help p { margin-top: 16px; line-height: 1.75; }
 
 .monricx-policy-page { max-width: 830px; margin: 0 auto; padding: 245px 20px 150px; color: #777373; }
-.monricx-policy-page > h1, .monricx-policy-page section > h1 { margin: 0 0 70px; font-family: 'Bodoni Moda', Georgia, serif; font-size: clamp(46px, 5vw, 63px); font-weight: 400; line-height: 1.15; }
+.monricx-policy-page > h1, .monricx-policy-page section > h1 { margin: 0 0 70px; font-family: 'Jost', 'Manrope', sans-serif; font-size: clamp(46px, 5vw, 63px); font-weight: 400; line-height: 1.15; }
 .monricx-policy-page section { margin-top: 75px; }
-.monricx-policy-page h2 { margin: 0 0 30px; font-family: 'Bodoni Moda', Georgia, serif; font-size: clamp(32px, 3vw, 43px); font-weight: 400; line-height: 1.25; }
-.monricx-policy-page h3 { margin: 42px 0 22px; font-family: 'Bodoni Moda', Georgia, serif; font-size: 30px; font-weight: 400; }
+.monricx-policy-page h2 { margin: 0 0 30px; font-family: 'Jost', 'Manrope', sans-serif; font-size: clamp(32px, 3vw, 43px); font-weight: 400; line-height: 1.25; }
+.monricx-policy-page h3 { margin: 42px 0 22px; font-family: 'Jost', 'Manrope', sans-serif; font-size: 30px; font-weight: 400; }
 .monricx-policy-page p, .monricx-policy-page li { font-size: 16px; line-height: 1.85; }
 .monricx-policy-page p + p { margin-top: 17px; }
 .monricx-policy-page ul { margin: 20px 0 0; padding-left: 24px; list-style: disc; }
@@ -367,8 +367,8 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-footer { position: relative; min-height: 644px; overflow: hidden; background: #080808; padding: 0; color: #f7f2f3; }
 .monricx-footer__grid { position: relative; display: block; width: min(1064px, 100%); height: 644px; margin: 0 auto; }
 .monricx-footer__grid > div:first-child { position: absolute; top: 24px; left: 0; width: 1064px; }
-.monricx-footer h1 { margin: 0; font-family: 'Bodoni Moda', Georgia, serif; font-size: 66px; font-weight: 400; line-height: 66px; letter-spacing: -0.025em; }
-.monricx-footer__tagline { margin-top: 2px; color: #f4e7c5; font-family: 'Bodoni Moda', Georgia, serif; font-size: 48px; line-height: 62.4px; }
+.monricx-footer h1 { margin: 0; font-family: 'Jost', 'Manrope', sans-serif; font-size: 66px; font-weight: 400; line-height: 66px; letter-spacing: -0.025em; }
+.monricx-footer__tagline { margin-top: 2px; color: #f4e7c5; font-family: 'Jost', 'Manrope', sans-serif; font-size: 48px; line-height: 62.4px; }
 .monricx-footer__contact { position: absolute; top: 203px; right: 0; width: 455px; color: #f1f1f1; font-family: 'Manrope', sans-serif; font-size: 16px; line-height: 28px; text-align: right; }
 .monricx-footer__contact p:nth-child(n+3) { color: #f7f2f3; }
 .monricx-footer__contact p:nth-child(3), .monricx-footer__contact p:nth-child(5) { margin-top: 8px; }
@@ -377,7 +377,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-footer__contact p:first-child { margin-bottom: 8px; font-weight: 400; }
 .monricx-footer__links p:first-child { margin-bottom: 11px; }
 .monricx-footer__links p + p { margin-top: 8px; }
-.monricx-footer__bottom { position: absolute; top: 434px; left: calc(50% - 543px); display: block; width: 1064px; margin: 0; border-top: 1px solid rgba(255,255,255,.45); padding-top: 14px; font-family: 'Bodoni Moda', Georgia, serif; font-size: 13px; line-height: 19.5px; }
+.monricx-footer__bottom { position: absolute; top: 434px; left: calc(50% - 543px); display: block; width: 1064px; margin: 0; border-top: 1px solid rgba(255,255,255,.45); padding-top: 14px; font-family: 'Jost', 'Manrope', sans-serif; font-size: 13px; line-height: 19.5px; }
 .monricx-footer__socials { position: absolute; top: 545px; left: calc(50% - 543px); display: flex; width: auto; margin: 0; gap: 18px; align-items: center; }
 .monricx-footer__socials a { display: grid; width: 43px; height: 43px; place-content: center; }
 .monricx-footer__socials svg { width: 43px; height: 43px; }
