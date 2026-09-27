@@ -6,10 +6,12 @@ use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\Admin\DiscountCodeController as AdminDiscountCodeController;
 use App\Http\Controllers\Admin\TemporaryAccessController as AdminTemporaryAccessController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CheckoutDiscountController;
 use App\Http\Controllers\OrderConfirmationController;
 use App\Http\Controllers\PaymentVerificationController;
 use App\Http\Controllers\ProductController;
@@ -35,6 +37,10 @@ Route::get('/checkout', [CheckoutController::class, 'create'])->name('checkout')
 Route::post('/checkout', [CheckoutController::class, 'store'])
     ->middleware('throttle:20,1')
     ->name('checkout.store');
+Route::post('/checkout/discount', [CheckoutDiscountController::class, 'store'])
+    ->middleware('throttle:20,1')
+    ->name('checkout.discount.store');
+Route::delete('/checkout/discount', [CheckoutDiscountController::class, 'destroy'])->name('checkout.discount.destroy');
 Route::post('/checkout/payment/verify', PaymentVerificationController::class)
     ->middleware('throttle:20,1')
     ->name('checkout.payment.verify');
@@ -57,6 +63,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
 
     Route::middleware('admin_permission:products')->group(function () {
         Route::resource('products', AdminProductController::class)->except('show');
+        Route::resource('discount-codes', AdminDiscountCodeController::class)->except('show');
     });
 
     Route::middleware('admin_permission:orders')->group(function () {

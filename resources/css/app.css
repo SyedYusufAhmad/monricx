@@ -266,9 +266,15 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-checkout-product__image span { position: absolute; top: -8px; right: -8px; display: grid; width: 28px; height: 28px; place-content: center; border-radius: 50%; background: #797d82; color: #fff; font-size: 12px; }
 .monricx-checkout-product h2 { margin: 0; font-size: 15px; font-weight: 700; line-height: 1.45; }
 .monricx-checkout-product > strong { font-size: 14px; font-weight: 400; }
-.monricx-discount-field { display: grid; margin-top: 28px; grid-template-columns: minmax(0,1fr) 95px; gap: 8px; }
-.monricx-discount-field input, .monricx-discount-field button { height: 61px; border: 1px solid #dadada; border-radius: 14px; background: #fff; padding: 0 17px; font-size: 14px; }
-.monricx-discount-field button { background: #ececec; color: #999; font-weight: 700; }
+.monricx-discount-field { margin-top: 28px; }
+.monricx-discount-form { display: grid; grid-template-columns: minmax(0,1fr) 95px; gap: 8px; }
+.monricx-discount-form input, .monricx-discount-form button { height: 61px; border: 1px solid #dadada; border-radius: 14px; background: #fff; padding: 0 17px; font-size: 14px; }
+.monricx-discount-form button { background: #080808; color: #fff; font-weight: 700; cursor: pointer; }
+.monricx-discount-applied { display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid #dadada; border-radius: 14px; background: #f7f7f7; padding: 0 17px; height: 61px; font-size: 14px; }
+.monricx-discount-applied button { border: none; background: none; padding: 0; color: #999; font-size: 13px; text-decoration: underline; cursor: pointer; }
+.monricx-discount-error { margin: 10px 0 0; color: #b3261e; font-size: 13px; }
+.monricx-discount-success { margin: 10px 0 0; color: #1e7e34; font-size: 13px; }
+.monricx-checkout-discount strong { color: #1e7e34; }
 .monricx-checkout-totals { margin-top: 34px; }
 .monricx-checkout-totals p { display: flex; justify-content: space-between; gap: 20px; margin: 16px 0; font-size: 14px; }
 .monricx-checkout-totals p:nth-child(2) span:last-child { text-align: right; }
@@ -502,7 +508,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
     .monricx-checkout-product { grid-template-columns: 66px minmax(0,1fr) auto; gap: 13px; }
     .monricx-checkout-product__image { width: 66px; height: 66px; }
     .monricx-checkout-product h2 { font-size: 13px; }
-    .monricx-discount-field { grid-template-columns: minmax(0,1fr) 82px; }
+    .monricx-discount-form { grid-template-columns: minmax(0,1fr) 82px; }
     .monricx-gallery-strip { min-height: 403px; }
     .monricx-gallery-strip > div { grid-template-columns: repeat(2, 156px); gap: 16px; }
     .monricx-gallery-strip img { width: 156px; height: 156px; }

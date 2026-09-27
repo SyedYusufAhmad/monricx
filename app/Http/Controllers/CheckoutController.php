@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCheckoutRequest;
 use App\Models\CartItem;
+use App\Models\DiscountCode;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\ProductVariant;
 use App\Services\CartService;
+use App\Services\DiscountService;
 use App\Services\OrderPaymentService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -19,7 +21,7 @@ class CheckoutController extends Controller
 {
     private const ORDER_SESSION_KEY = 'monricx_checkout_order_id';
 
-    public function create(Request $request, CartService $cartService): View|RedirectResponse
+    public function create(Request $request, CartService $cartService, DiscountService $discounts): View|RedirectResponse
     {
         $summary = $cartService->summary($request);
 
@@ -27,11 +29,29 @@ class CheckoutController extends Controller
             return redirect()->route('shop')->with('cart_open', true);
         }
 
+        $discountCode = null;
+        $discountPaise = 0;
+        $sessionCode = $request->session()->get(DiscountService::SESSION_KEY);
+
+        if ($sessionCode) {
+            [$discount, $error] = $discounts->validate($sessionCode, (int) $summary['subtotal_paise']);
+
+            if ($discount) {
+                $discountCode = $discount->code;
+                $discountPaise = $discounts->calculateDiscountPaise($discount, (int) $summary['subtotal_paise']);
+            } else {
+                $request->session()->forget(DiscountService::SESSION_KEY);
+                $request->session()->flash('discount_error', $error);
+            }
+        }
+
         $draftOrder = $this->draftOrder($request);
 
         return view('storefront.checkout', [
             'summary' => $summary,
             'draftOrder' => $draftOrder,
+            'discountCode' => $discountCode,
+            'discountPaise' => $discountPaise,
             'states' => config('monricx.indian_states'),
             'shippingFeePaise' => config('monricx.shipping_fee_paise'),
             'freeShippingAbovePaise' => config('monricx.free_shipping_above_paise'),
@@ -44,6 +64,7 @@ class CheckoutController extends Controller
         StoreCheckoutRequest $request,
         CartService $cartService,
         OrderPaymentService $paymentService,
+        DiscountService $discounts,
     ): RedirectResponse {
         $validated = $request->validated();
         $cart = $cartService->current($request);
@@ -52,7 +73,7 @@ class CheckoutController extends Controller
             return redirect()->route('shop')->with('cart_open', true);
         }
 
-        $order = DB::transaction(function () use ($request, $validated, $cart): Order {
+        $order = DB::transaction(function () use ($request, $validated, $cart, $discounts): Order {
             $cartItems = CartItem::query()
                 ->where('cart_id', $cart->id)
                 ->lockForUpdate()
@@ -101,11 +122,31 @@ class CheckoutController extends Controller
 
             $order = $this->lockedDraftOrder($request) ?? new Order;
             $isCod = $validated['payment_option'] === 'cash_on_delivery';
-            $shippingFeePaise = ! $isCod && $subtotalPaise <= config('monricx.free_shipping_above_paise')
+
+            $discountPaise = 0;
+            $discountCode = null;
+            $sessionCode = $request->session()->get(DiscountService::SESSION_KEY);
+
+            if ($sessionCode) {
+                $code = DiscountCode::query()
+                    ->where('code', strtoupper(trim((string) $sessionCode)))
+                    ->lockForUpdate()
+                    ->first();
+
+                if ($code && $code->is_active && $code->isCurrentlyValid()
+                    && $subtotalPaise >= $code->minimum_order_paise) {
+                    $discountPaise = $discounts->calculateDiscountPaise($code, $subtotalPaise);
+                    $discountCode = $code->code;
+                    $code->increment('used_count');
+                }
+            }
+
+            $discountedSubtotalPaise = $subtotalPaise - $discountPaise;
+            $shippingFeePaise = ! $isCod && $discountedSubtotalPaise <= config('monricx.free_shipping_above_paise')
                 ? config('monricx.shipping_fee_paise')
                 : 0;
             $codFeePaise = $isCod ? config('monricx.cod_fee_paise') : 0;
-            $totalPaise = $subtotalPaise + $shippingFeePaise + $codFeePaise;
+            $totalPaise = $discountedSubtotalPaise + $shippingFeePaise + $codFeePaise;
             $order->fill([
                 'user_id' => $request->user()?->id,
                 'status' => 'draft',
@@ -123,13 +164,13 @@ class CheckoutController extends Controller
                 'country_code' => $validated['country_code'],
                 'currency' => 'INR',
                 'subtotal_paise' => $subtotalPaise,
-                'discount_paise' => 0,
+                'discount_paise' => $discountPaise,
                 'shipping_paise' => $shippingFeePaise,
                 'cod_fee_paise' => $codFeePaise,
                 'online_payable_paise' => $isCod ? $codFeePaise : $totalPaise,
-                'cod_due_paise' => $isCod ? $subtotalPaise : 0,
+                'cod_due_paise' => $isCod ? $discountedSubtotalPaise : 0,
                 'total_paise' => $totalPaise,
-                'discount_code' => null,
+                'discount_code' => $discountCode,
                 'consent_at' => now(),
             ]);
             $order->save();

@@ -15,7 +15,7 @@
     $selectedState = old('state', $draftOrder?->state ?? '');
     $initialShippingPaise = $selectedState
         && $selectedPaymentOption === 'razorpay'
-        && $summary['subtotal_paise'] <= $freeShippingAbovePaise
+        && ($summary['subtotal_paise'] - $discountPaise) <= $freeShippingAbovePaise
             ? $shippingFeePaise
             : 0;
     $initialCodFeePaise = $selectedPaymentOption === 'cash_on_delivery' ? $codFeePaise : 0;
@@ -25,13 +25,14 @@
           paymentOption: @js($selectedPaymentOption),
           deliveryState: @js($selectedState),
           subtotalPaise: {{ $summary['subtotal_paise'] }},
+          discountPaise: {{ $discountPaise }},
           standardShippingPaise: {{ $shippingFeePaise }},
           freeShippingAbovePaise: {{ $freeShippingAbovePaise }},
           codFeePaise: {{ $codFeePaise }},
           get shippingPaise() {
               return this.deliveryState
                   && this.paymentOption === 'razorpay'
-                  && this.subtotalPaise <= this.freeShippingAbovePaise
+                  && (this.subtotalPaise - this.discountPaise) <= this.freeShippingAbovePaise
                       ? this.standardShippingPaise
                       : 0;
           },
@@ -172,12 +173,35 @@
                 </div>
 
                 <div class="monricx-discount-field">
-                    <input type="text" placeholder="Enter discount code" aria-label="Enter discount code">
-                    <button type="button" disabled>Apply</button>
+                    @if ($discountCode)
+                        <div class="monricx-discount-applied">
+                            <span><strong>{{ $discountCode }}</strong> applied</span>
+                            <form action="{{ route('checkout.discount.destroy') }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">Remove</button>
+                            </form>
+                        </div>
+                    @else
+                        <form action="{{ route('checkout.discount.store') }}" method="post" class="monricx-discount-form">
+                            @csrf
+                            <input type="text" name="code" placeholder="Enter discount code" aria-label="Enter discount code" value="{{ old('code') }}" autocomplete="off">
+                            <button type="submit">Apply</button>
+                        </form>
+                    @endif
                 </div>
+                @if (session('discount_error'))
+                    <p class="monricx-discount-error">{{ session('discount_error') }}</p>
+                @endif
+                @if (session('discount_success'))
+                    <p class="monricx-discount-success">{{ session('discount_success') }}</p>
+                @endif
 
                 <div class="monricx-checkout-totals">
                     <p><span>Subtotal</span><strong>₹{{ number_format($summary['subtotal_paise'] / 100, 2) }}</strong></p>
+                    @if ($discountPaise > 0)
+                        <p class="monricx-checkout-discount"><span>Discount ({{ $discountCode }})</span><strong>−₹{{ number_format($discountPaise / 100, 2) }}</strong></p>
+                    @endif
                     <p>
                         <span>Shipping</span>
                         <span x-show="!deliveryState">Choose shipping destination</span>
@@ -186,9 +210,9 @@
                     <p x-cloak x-show="paymentOption === 'cash_on_delivery'"><span>Cash on delivery charge</span><strong>₹{{ number_format($codFeePaise / 100, 2) }}</strong></p>
                     <div class="monricx-checkout-payment-split" x-cloak x-show="paymentOption === 'cash_on_delivery'">
                         <p><span>Pay online now</span><strong>₹{{ number_format($codFeePaise / 100, 2) }}</strong></p>
-                        <p><span>Pay on delivery</span><strong>₹{{ number_format($summary['subtotal_paise'] / 100, 2) }}</strong></p>
+                        <p><span>Pay on delivery</span><strong x-text="money(subtotalPaise - discountPaise)">₹{{ number_format(($summary['subtotal_paise'] - $discountPaise) / 100, 2) }}</strong></p>
                     </div>
-                    <p class="monricx-checkout-total"><strong>Total</strong><strong x-text="money(subtotalPaise + shippingPaise + codChargePaise)">₹{{ number_format(($summary['subtotal_paise'] + $initialShippingPaise + $initialCodFeePaise) / 100, 2) }}</strong></p>
+                    <p class="monricx-checkout-total"><strong>Total</strong><strong x-text="money(subtotalPaise - discountPaise + shippingPaise + codChargePaise)">₹{{ number_format(($summary['subtotal_paise'] - $discountPaise + $initialShippingPaise + $initialCodFeePaise) / 100, 2) }}</strong></p>
                 </div>
             </div>
         </aside>
