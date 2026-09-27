@@ -202,7 +202,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-product-quantity { display: flex; width: 146px; height: 48px; border: 1px solid #dadce0; }
 .monricx-product-quantity button, .monricx-product-quantity input { width: 48px; height: 46px; text-align: center; }
 .monricx-product-quantity input { border-inline: 1px solid #dadce0; background: #fff; }
-.monricx-product-buy > button { min-width: 125px; height: 50px; border-radius: 999px; background: #000; padding: 16px 28px; color: #f7f2f3; font-family: 'Manrope', sans-serif; font-size: 14px; line-height: 18.2px; box-shadow: 0 4px 16px rgba(0,0,0,.12); }
+.monricx-product-buy > button { min-width: 125px; height: 50px; border-radius: 999px; background: #000; padding: 16px 28px; color: #f7f2f3; font-family: 'Manrope', sans-serif; font-size: 14px; line-height: 18.2px; box-shadow: 0 4px 16px rgba(0,0,0,.12); white-space: nowrap; }
 .monricx-product-buy > button:disabled { cursor: not-allowed; opacity: .45; }
 .monricx-product-error { margin-top: 16px; color: #a22626; font-size: 13px; }
 .monricx-product-description { margin-top: 56px; color: #0b0b0b; font-family: 'Manrope', sans-serif; font-size: 16px; font-weight: 400; line-height: 28px; }
@@ -488,7 +488,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
     .monricx-product-buy__controls { gap: 24px; }
     .monricx-product-quantity { width: 146px; height: 48px; }
     .monricx-product-quantity button, .monricx-product-quantity input { width: 48px; height: 46px; }
-    .monricx-product-buy > button { width: 113px; min-width: 113px; height: 46px; padding: 14px 22px; }
+    .monricx-product-buy > button { width: auto; min-width: 0; height: 46px; padding: 14px 22px; }
     .monricx-product-description { margin-top: 56px; }
     .monricx-related-products { padding-inline: 16px; }
     .monricx-related-products > .monricx-product-grid { gap: 24px; }
