@@ -5,10 +5,10 @@
 @endphp
 <article class="monricx-product-card">
     <a href="{{ route('product.show', $product->slug) }}" class="monricx-product-card__link">
+        @if ($product->badge)
+            <span class="monricx-product-card__badge">{{ $product->badge }}</span>
+        @endif
         <div class="monricx-product-card__image">
-            @if ($product->badge)
-                <span>{{ $product->badge }}</span>
-            @endif
             @if ($product->images->first())
                 <img src="{{ asset('storage/'.$product->images->first()->path) }}" alt="{{ $product->images->first()->alt_text ?: $product->title }}">
             @endif
