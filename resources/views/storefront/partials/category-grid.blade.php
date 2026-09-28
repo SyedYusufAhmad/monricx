@@ -7,7 +7,7 @@
             @if ($imagePrefix === 'home')
                 <picture>
                     <source media="(max-width: 768px)" srcset="{{ asset('images/monricx/collection-necklaces-mobile.jpg') }}">
-                    <img src="{{ asset('images/monricx/collection-rings-desktop.jpg') }}" alt="a woman wearing a pair of earrings with pearls">
+                    <img src="{{ asset('images/monricx/collection-necklaces-desktop.jpg') }}" alt="silver-colored rings">
                 </picture>
             @else
                 <img src="{{ asset('images/monricx/shop-rings.jpg') }}" alt="">
@@ -23,14 +23,14 @@
             @if ($imagePrefix === 'home')
                 <picture>
                     <source media="(max-width: 768px)" srcset="{{ asset('images/monricx/collection-rings-mobile.jpg') }}">
-                    <img src="{{ asset('images/monricx/collection-earings-desktop.jpg') }}" alt="A gold necklace with a rectangular diamond pendant">
+                    <img src="{{ asset('images/monricx/collection-rings-desktop.jpg') }}" alt="a woman wearing a pair of earrings with pearls">
                 </picture>
             @else
                 <img src="{{ asset('images/monricx/shop-earings.jpg') }}" alt="">
             @endif
             <div class="monricx-category-card__shade"></div>
             <div class="monricx-category-card__content">
-                <h3><strong>Earing</strong></h3>
+                <h3><strong>Earrings</strong></h3>
                 <p>Discover Our Exclusive Earring Collection</p>
                 <a href="/earings">See more</a>
             </div>
@@ -39,7 +39,7 @@
             @if ($imagePrefix === 'home')
                 <picture>
                     <source media="(max-width: 768px)" srcset="{{ asset('images/monricx/collection-earings-mobile.jpg') }}">
-                    <img src="{{ asset('images/monricx/collection-necklaces-desktop.jpg') }}" alt="silver-colored rings">
+                    <img src="{{ asset('images/monricx/collection-earings-desktop.jpg') }}" alt="A gold necklace with a rectangular diamond pendant">
                 </picture>
             @else
                 <img src="{{ asset('images/monricx/shop-necklaces.jpg') }}" alt="">

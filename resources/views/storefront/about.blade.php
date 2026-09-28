@@ -34,7 +34,7 @@
             </article>
             <article>
                 <h2>Timeless Elegance</h2>
-                <p>Discover our curated collection of premium earrings, rings, bracelets, pendants, anklets, and necklaces—designed to complement every style and every occasion with elegance and sophistication..</p>
+                <p>Discover our curated collection of premium earrings, rings, bracelets, pendants, anklets, and necklaces—designed to complement every style and every occasion with elegance and sophistication.</p>
             </article>
         </section>
     </div>

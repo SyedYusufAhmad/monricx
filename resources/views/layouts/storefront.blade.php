@@ -33,7 +33,7 @@
                     </button>
                     <div class="monricx-shop-menu" x-cloak x-show="shopOpen" x-transition>
                         <a href="/rings">Rings</a>
-                        <a href="/earings">Earing</a>
+                        <a href="/earings">Earrings</a>
                         <a href="/necklace-and-pendants">Necklaces &amp; Pendants</a>
                         <a href="/bracelets">Bracelets</a>
                     </div>
@@ -56,7 +56,7 @@
                     @if ($cartSummary['item_count'] > 0)
                         <span class="monricx-cart-count" aria-hidden="true">{{ $cartSummary['item_count'] }}</span>
                     @endif
-                    <span class="sr-only">{{ $cartSummary['item_count'] }} items</span>
+                    <span class="sr-only">{{ $cartSummary['item_count'] }} {{ $cartSummary['item_count'] == 1 ? 'item' : 'items' }}</span>
                 </button>
             </div>
         </div>
@@ -70,7 +70,7 @@
             </div>
             <div class="monricx-mobile-shop-menu" x-cloak x-show="mobileShopOpen" x-transition>
                 <a href="/rings">Rings</a>
-                <a href="/earings">Earing</a>
+                <a href="/earings">Earrings</a>
                 <a href="/necklace-and-pendants">Necklaces &amp; Pendants</a>
                 <a href="/bracelets">Bracelets</a>
             </div>
