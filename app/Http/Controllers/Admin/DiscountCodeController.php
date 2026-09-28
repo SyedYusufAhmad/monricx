@@ -67,7 +67,12 @@ class DiscountCodeController extends Controller
         return $request->validate([
             'code' => ['required', 'string', 'max: 32', Rule::unique('discount_codes', 'code')->ignore($discount?->id)],
             'type' => ['required', Rule::in(['percentage', 'fixed'])],
-            'value' => ['required', 'numeric', 'min: 1', 'max: 1000000'],
+            'value' => [
+                'required',
+                'numeric',
+                'min: 1',
+                $request->input('type') === 'percentage' ? 'max:100' : 'max:1000000',
+            ],
             'minimum_order_rupees' => ['nullable', 'numeric', 'min: 0', 'max: 1000000'],
             'maximum_discount_rupees' => ['nullable', 'numeric', 'min: 1', 'max: 1000000'],
             'usage_limit' => ['nullable', 'integer', 'min: 1', 'max: 1000000'],
@@ -90,7 +95,7 @@ class DiscountCodeController extends Controller
             'minimum_order_paise' => isset($validated['minimum_order_rupees'])
                 ? (int) round((float) $validated['minimum_order_rupees'] * 100)
                 : 0,
-            'maximum_discount_paise' => isset($validated['maximum_discount_rupees'])
+            'maximum_discount_paise' => $validated['type'] === 'percentage' && isset($validated['maximum_discount_rupees'])
                 ? (int) round((float) $validated['maximum_discount_rupees'] * 100)
                 : null,
             'usage_limit' => $validated['usage_limit'] ?? null,

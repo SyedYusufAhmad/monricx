@@ -137,12 +137,11 @@ class CheckoutController extends Controller
                     && $subtotalPaise >= $code->minimum_order_paise) {
                     $discountPaise = $discounts->calculateDiscountPaise($code, $subtotalPaise);
                     $discountCode = $code->code;
-                    $code->increment('used_count');
                 }
             }
 
             $discountedSubtotalPaise = $subtotalPaise - $discountPaise;
-            $shippingFeePaise = ! $isCod && $discountedSubtotalPaise <= config('monricx.free_shipping_above_paise')
+            $shippingFeePaise = ! $isCod && $subtotalPaise <= config('monricx.free_shipping_above_paise')
                 ? config('monricx.shipping_fee_paise')
                 : 0;
             $codFeePaise = $isCod ? config('monricx.cod_fee_paise') : 0;

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Contracts\PaymentGateway;
+use App\Models\DiscountCode;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Payment;
@@ -467,6 +468,14 @@ class OrderPaymentService
                 'payment_status' => $isCod ? 'cod_fee_paid' : 'captured',
                 'placed_at' => $order->placed_at ?? now(),
             ])->save();
+
+            if ($order->discount_code) {
+                DiscountCode::query()
+                    ->where('code', $order->discount_code)
+                    ->lockForUpdate()
+                    ->first()
+                    ?->increment('used_count');
+            }
         });
     }
 

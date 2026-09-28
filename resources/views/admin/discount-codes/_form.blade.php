@@ -28,7 +28,7 @@
                     </div>
                     <div>
                         <label for="value" class="mb-2 block text-sm"><span id="value-label">{{ $type === 'fixed' ? 'Amount (₹)' : 'Percentage (%)' }}</span></label>
-                        <input id="value" name="value" type="number" step="any" min="1" value="{{ $valueDisplay }}" required class="w-full rounded-lg border border-black/20 px-4 py-3" placeholder="{{ $type === 'fixed' ? 'e.g. 200' : 'e.g. 10' }}">
+                        <input id="value" name="value" type="number" step="any" min="1" max="{{ $type === 'fixed' ? 1000000 : 100 }}" value="{{ $valueDisplay }}" required class="w-full rounded-lg border border-black/20 px-4 py-3" placeholder="{{ $type === 'fixed' ? 'e.g. 200' : 'e.g. 10' }}">
                         @error('value')<p class="mt-2 text-sm text-red-700">{{ $message }}</p>@enderror
                     </div>
                 </div>
@@ -90,5 +90,6 @@
         var fixed = this.value === 'fixed';
         document.getElementById('value-label').textContent = fixed ? 'Amount (₹)' : 'Percentage (%)';
         document.getElementById('value').placeholder = fixed ? 'e.g. 200' : 'e.g. 10';
+        document.getElementById('value').max = fixed ? '1000000' : '100';
     });
 </script>

@@ -53,7 +53,7 @@ class DiscountService
             ? (int) floor($subtotalPaise * $discount->value / 100)
             : (int) $discount->value;
 
-        if ($discount->maximum_discount_paise !== null) {
+        if ($discount->type === 'percentage' && $discount->maximum_discount_paise !== null) {
             $amount = min($amount, (int) $discount->maximum_discount_paise);
         }
 

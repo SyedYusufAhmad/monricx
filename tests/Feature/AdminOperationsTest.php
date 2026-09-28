@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Category;
+use App\Http\Controllers\Admin\DiscountCodeController;
 use App\Models\Order;
 use App\Models\PageView;
 use App\Models\Product;
@@ -10,12 +11,27 @@ use App\Models\User;
 use App\Services\TemporaryAdminAccessService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
 use Tests\TestCase;
 
 class AdminOperationsTest extends TestCase
 {
     use RefreshDatabase;
+
+    public function test_super_admin_rejects_percentage_discount_codes_above_100_percent(): void
+    {
+        $request = Request::create('/admin/discount-codes', 'POST', [
+            'code' => 'TOO_HIGH',
+            'type' => 'percentage',
+            'value' => '101',
+        ]);
+        $method = new \ReflectionMethod(DiscountCodeController::class, 'validateCode');
+
+        $this->expectException(ValidationException::class);
+        $method->invoke(new DiscountCodeController, $request);
+    }
 
     public function test_super_admin_can_create_update_and_archive_a_product_with_an_image(): void
     {

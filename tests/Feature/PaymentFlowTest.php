@@ -4,11 +4,13 @@ namespace Tests\Feature;
 
 use App\Contracts\PaymentGateway;
 use App\Models\CartItem;
+use App\Models\DiscountCode;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Models\Product;
 use App\Models\StockReservation;
 use App\Services\OrderPaymentService;
+use App\Services\DiscountService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Testing\TestResponse;
 use Tests\Fakes\FakePaymentGateway;
@@ -28,6 +30,51 @@ class PaymentFlowTest extends TestCase
         $this->gateway = new FakePaymentGateway;
         $this->app->instance(PaymentGateway::class, $this->gateway);
         config(['services.razorpay.key_id' => 'rzp_test_monricx']);
+    }
+
+    public function test_coupon_uses_pre_discount_subtotal_for_shipping_and_is_counted_only_after_capture(): void
+    {
+        $product = $this->product([
+            'price_paise' => 40000,
+            'discounted_price_paise' => null,
+        ]);
+        $discount = DiscountCode::query()->create([
+            'code' => 'SAVE100',
+            'type' => 'fixed',
+            'value' => 10000,
+            'maximum_discount_paise' => 100,
+            'minimum_order_paise' => 0,
+            'is_active' => true,
+        ]);
+
+        $this->withSession([DiscountService::SESSION_KEY => $discount->code]);
+        $this->startCheckout($product, 1, 'razorpay')
+            ->assertSessionHas('razorpay_checkout', fn (array $checkout) => $checkout['amount'] === 30000);
+
+        $order = Order::query()->sole();
+        $payment = Payment::query()->sole();
+
+        $this->assertSame(40000, $order->subtotal_paise);
+        $this->assertSame(10000, $order->discount_paise);
+        $this->assertSame(0, $order->shipping_paise);
+        $this->assertSame(30000, $order->online_payable_paise);
+        $this->assertSame(0, $discount->fresh()->used_count);
+
+        $this->gateway->fetchedPayment = $this->capturedPayment($payment);
+        $this->post(route('checkout.payment.verify'), [
+            'razorpay_payment_id' => 'pay_coupon_1',
+            'razorpay_order_id' => $payment->provider_order_id,
+            'razorpay_signature' => 'valid-signature',
+        ])->assertRedirect(route('order.confirmation', $order->public_id));
+
+        $this->assertSame(1, $discount->fresh()->used_count);
+
+        app(OrderPaymentService::class)->processWebhookPayment([
+            ...$this->capturedPayment($payment),
+            'id' => 'pay_coupon_1',
+        ]);
+
+        $this->assertSame(1, $discount->fresh()->used_count);
     }
 
     public function test_online_checkout_creates_full_value_razorpay_order_and_stock_reservation(): void
