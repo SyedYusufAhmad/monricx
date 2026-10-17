@@ -28,6 +28,7 @@ class ProductController extends Controller
             $query->where(fn ($query) => $query
                 ->where('title', 'like', "%{$search}%")
                 ->orWhere('subtitle', 'like', "%{$search}%")
+                ->orWhere('sku', 'like', "%{$search}%")
                 ->orWhere('slug', 'like', "%{$search}%"));
         }
 

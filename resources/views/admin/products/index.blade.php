@@ -12,7 +12,7 @@
     <form method="get" class="mt-8 flex flex-wrap gap-3 rounded-xl bg-white p-4 shadow-sm">
         <label class="min-w-[240px] flex-1">
             <span class="sr-only">Search products</span>
-            <input type="search" name="q" value="{{ $query }}" placeholder="Search title, subtitle, or URL" class="w-full rounded-lg border border-black/20 px-4 py-2.5">
+            <input type="search" name="q" value="{{ $query }}" placeholder="Search title, subtitle, SKU, or URL" class="w-full rounded-lg border border-black/20 px-4 py-2.5">
         </label>
         <select name="status" class="rounded-lg border border-black/20 bg-white px-4 py-2.5" aria-label="Product status">
             <option value="">All statuses</option>
@@ -25,7 +25,7 @@
     <section class="mt-6 overflow-hidden rounded-xl bg-white shadow-sm">
         <div class="overflow-x-auto">
             <table class="w-full min-w-[820px] text-left text-sm">
-                <thead class="bg-black/[0.03] text-black/55"><tr><th class="px-5 py-3">Product</th><th class="px-5 py-3">Category</th><th class="px-5 py-3">Price</th><th class="px-5 py-3">Stock</th><th class="px-5 py-3">Status</th><th class="px-5 py-3"><span class="sr-only">Actions</span></th></tr></thead>
+                <thead class="bg-black/[0.03] text-black/55"><tr><th class="px-5 py-3">Product</th><th class="px-5 py-3">SKU</th><th class="px-5 py-3">Category</th><th class="px-5 py-3">Price</th><th class="px-5 py-3">Stock</th><th class="px-5 py-3">Status</th><th class="px-5 py-3"><span class="sr-only">Actions</span></th></tr></thead>
                 <tbody class="divide-y divide-black/10">
                     @forelse ($products as $product)
                         <tr>
@@ -39,6 +39,7 @@
                                     <div><p class="font-medium">{{ $product->title }}</p><p class="mt-1 text-xs text-black/45">/{{ $product->slug }}</p></div>
                                 </div>
                             </td>
+                            <td class="px-5 py-4">{{ $product->sku ?? '—' }}</td>
                             <td class="px-5 py-4">{{ $product->category?->name ?? 'Uncategorised' }}</td>
                             <td class="px-5 py-4">
                                 @if ($product->discounted_price_paise !== null)<span class="mr-1 text-xs text-black/40 line-through">₹{{ number_format($product->price_paise / 100, 2) }}</span>@endif
@@ -49,7 +50,7 @@
                             <td class="px-5 py-4 text-right"><a href="{{ route('admin.products.edit', $product) }}" class="underline decoration-black/20 underline-offset-4">Edit</a></td>
                         </tr>
                     @empty
-                        <tr><td colspan="6" class="px-6 py-12 text-center text-black/50">No products have been added.</td></tr>
+                        <tr><td colspan="7" class="px-6 py-12 text-center text-black/50">No products have been added.</td></tr>
                     @endforelse
                 </tbody>
             </table>
