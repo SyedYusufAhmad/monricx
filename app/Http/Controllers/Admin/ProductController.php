@@ -87,7 +87,7 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $product): RedirectResponse
     {
-        $validated = $this->validateProduct($request);
+        $validated = $this->validateProduct($request, $product);
 
         DB::transaction(function () use ($request, $validated, $product): void {
             $product->update($this->productAttributes($validated, $product));
@@ -123,12 +123,13 @@ class ProductController extends Controller
     }
 
     /** @return array<string, mixed> */
-    private function validateProduct(Request $request): array
+    private function validateProduct(Request $request, ?Product $product = null): array
     {
         return $request->validate([
             'category_id' => ['required', 'integer', Rule::exists('categories', 'id')->where('is_active', true)],
             'title' => ['required', 'string', 'max:255'],
             'subtitle' => ['nullable', 'string', 'max:255'],
+            'sku' => ['nullable', 'string', 'max:255', Rule::unique('products', 'sku')->ignore($product?->id)],
             'price' => ['required', 'decimal:0,2', 'min:0.01', 'max:9999999.99'],
             'discounted_price' => ['nullable', 'decimal:0,2', 'min:0.01', 'lt:price'],
             'stock' => ['required', 'integer', 'min:0', 'max:4294967295'],
@@ -155,6 +156,7 @@ class ProductController extends Controller
             'category_id' => $validated['category_id'],
             'title' => trim($validated['title']),
             'subtitle' => filled($validated['subtitle'] ?? null) ? trim($validated['subtitle']) : null,
+            'sku' => filled($validated['sku'] ?? null) ? trim($validated['sku']) : null,
             'price_paise' => $this->rupeesToPaise($validated['price']),
             'discounted_price_paise' => filled($validated['discounted_price'] ?? null)
                 ? $this->rupeesToPaise($validated['discounted_price'])

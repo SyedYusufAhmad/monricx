@@ -19,6 +19,12 @@
                     @error('subtitle')<p class="mt-2 text-sm text-red-700">{{ $message }}</p>@enderror
                 </div>
                 <div>
+                    <label for="sku" class="mb-2 block text-sm">SKU number <span class="text-black/50">(optional)</span></label>
+                    <input id="sku" name="sku" value="{{ old('sku', $product->sku ?? '') }}" maxlength="255" class="w-full rounded-lg border border-black/20 px-4 py-3">
+                    <p class="mt-1 text-xs text-black/50">Optional. Leave blank if the product has no SKU number.</p>
+                    @error('sku')<p class="mt-2 text-sm text-red-700">{{ $message }}</p>@enderror
+                </div>
+                <div>
                     <label for="description" class="mb-2 block text-sm">Description</label>
                     <textarea id="description" name="description" rows="12" required maxlength="50000" class="w-full rounded-lg border border-black/20 px-4 py-3">{{ old('description', $product->description ?? '') }}</textarea>
                     @error('description')<p class="mt-2 text-sm text-red-700">{{ $message }}</p>@enderror

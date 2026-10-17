@@ -18,6 +18,7 @@ class Product extends Model
         'source_id',
         'title',
         'slug',
+        'sku',
         'subtitle',
         'price_paise',
         'discounted_price_paise',
