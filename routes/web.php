@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AccountController as AdminAccountController;
 use App\Http\Controllers\Admin\AnalyticsController as AdminAnalyticsController;
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
@@ -63,6 +64,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
 
     Route::middleware('admin_permission:products')->group(function () {
         Route::resource('products', AdminProductController::class)->except('show');
+        Route::resource('categories', AdminCategoryController::class)->except('show');
         Route::resource('discount-codes', AdminDiscountCodeController::class)->except('show');
     });
 

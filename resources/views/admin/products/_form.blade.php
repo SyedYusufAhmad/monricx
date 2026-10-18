@@ -110,7 +110,10 @@
             <h2 class="font-semibold">Organisation</h2>
             <div class="mt-5 space-y-5">
                 <div>
-                    <label for="category_id" class="mb-2 block text-sm">Category</label>
+                    <div class="mb-2 flex items-center justify-between gap-3">
+                        <label for="category_id" class="block text-sm">Category</label>
+                        <button type="button" id="open-category-modal" class="shrink-0 text-sm underline decoration-black/20 underline-offset-4">+ Add new category</button>
+                    </div>
                     <select id="category_id" name="category_id" required class="w-full rounded-lg border border-black/20 bg-white px-4 py-3">
                         <option value="">Select category</option>
                         @foreach ($categories as $category)
@@ -133,3 +136,157 @@
         <button type="submit" class="w-full rounded-lg bg-[#080808] px-5 py-3 text-white">{{ $editing ? 'Save changes' : 'Create product' }}</button>
     </aside>
 </div>
+
+<div id="category-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4">
+    <div class="w-full max-w-md rounded-xl bg-white p-6 shadow-lg" role="dialog" aria-modal="true" aria-labelledby="category-modal-title">
+        <div class="flex items-start justify-between gap-4">
+            <h3 id="category-modal-title" class="text-lg font-semibold">Add new category</h3>
+            <button type="button" id="close-category-modal" class="text-2xl leading-none text-black/40" aria-label="Close">&times;</button>
+        </div>
+        <div class="mt-4 space-y-4">
+            <div>
+                <label for="modal-category-name" class="mb-2 block text-sm">Name</label>
+                <input id="modal-category-name" name="name" required maxlength="255" class="w-full rounded-lg border border-black/20 px-4 py-3" placeholder="e.g. Anklets">
+                <p class="modal-error mt-1 hidden text-sm text-red-700" data-error-for="name"></p>
+            </div>
+            <div>
+                <label for="modal-category-description" class="mb-2 block text-sm">Description <span class="text-black/40">(optional)</span></label>
+                <textarea id="modal-category-description" name="description" rows="3" class="w-full rounded-lg border border-black/20 px-4 py-3"></textarea>
+                <p class="modal-error mt-1 hidden text-sm text-red-700" data-error-for="description"></p>
+            </div>
+            <div>
+                <label for="modal-category-image" class="mb-2 block text-sm">Image <span class="text-black/40">(optional)</span></label>
+                <input id="modal-category-image" name="image" type="file" accept="image/*" class="w-full text-sm">
+                <p class="modal-error mt-1 hidden text-sm text-red-700" data-error-for="image"></p>
+            </div>
+            <label class="flex cursor-pointer items-center gap-3 text-sm">
+                <input id="modal-category-active" type="checkbox" name="is_active" value="1" checked class="h-5 w-5 accent-black">
+                Active
+            </label>
+            <p id="category-modal-general-error" class="hidden text-sm text-red-700"></p>
+            <div class="flex justify-end gap-3 pt-2">
+                <button type="button" id="cancel-category-modal" class="rounded-lg border border-black/20 px-5 py-2.5 text-sm">Cancel</button>
+                <button type="button" id="category-modal-submit" class="rounded-lg bg-[#080808] px-5 py-2.5 text-sm text-white">Save category</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    var modal = document.getElementById('category-modal');
+    var select = document.getElementById('category_id');
+    var nameInput = document.getElementById('modal-category-name');
+    var descriptionInput = document.getElementById('modal-category-description');
+    var imageInput = document.getElementById('modal-category-image');
+    var activeInput = document.getElementById('modal-category-active');
+    var submitBtn = document.getElementById('category-modal-submit');
+    var generalError = document.getElementById('category-modal-general-error');
+    var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    var storeUrl = "{{ route('admin.categories.store') }}";
+
+    function clearErrors() {
+        modal.querySelectorAll('.modal-error').forEach(function (el) {
+            el.textContent = '';
+            el.classList.add('hidden');
+        });
+        generalError.textContent = '';
+        generalError.classList.add('hidden');
+    }
+
+    function resetModal() {
+        nameInput.value = '';
+        descriptionInput.value = '';
+        imageInput.value = '';
+        activeInput.checked = true;
+        clearErrors();
+    }
+
+    function openModal() {
+        resetModal();
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        nameInput.focus();
+    }
+
+    function closeModal() {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        resetModal();
+    }
+
+    function showErrors(errors) {
+        clearErrors();
+        Object.keys(errors).forEach(function (field) {
+            var el = modal.querySelector('[data-error-for="' + field + '"]');
+            if (el && errors[field] && errors[field][0]) {
+                el.textContent = errors[field][0];
+                el.classList.remove('hidden');
+            }
+        });
+    }
+
+    function showGeneralError(message) {
+        generalError.textContent = message || 'Could not save the category. Please try again.';
+        generalError.classList.remove('hidden');
+    }
+
+    document.getElementById('open-category-modal').addEventListener('click', openModal);
+    document.getElementById('close-category-modal').addEventListener('click', closeModal);
+    document.getElementById('cancel-category-modal').addEventListener('click', closeModal);
+    modal.addEventListener('click', function (event) {
+        if (event.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+    });
+
+    submitBtn.addEventListener('click', function () {
+        clearErrors();
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Saving…';
+
+        var formData = new FormData();
+        formData.append('name', nameInput.value);
+        formData.append('description', descriptionInput.value);
+        if (imageInput.files[0]) formData.append('image', imageInput.files[0]);
+        if (activeInput.checked) formData.append('is_active', '1');
+
+        fetch(storeUrl, {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': csrfToken,
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+            },
+            body: formData,
+        })
+            .then(function (response) {
+                return response.json().then(function (data) {
+                    return { status: response.status, data: data };
+                });
+            })
+            .then(function (result) {
+                if (result.status === 201 && result.data.id) {
+                    var option = document.createElement('option');
+                    option.value = result.data.id;
+                    option.textContent = result.data.name;
+                    select.appendChild(option);
+                    select.value = result.data.id;
+                    closeModal();
+                } else if (result.status === 422 && result.data.errors) {
+                    showErrors(result.data.errors);
+                } else {
+                    showGeneralError(result.data && result.data.message);
+                }
+            })
+            .catch(function () {
+                showGeneralError();
+            })
+            .then(function () {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Save category';
+            });
+    });
+})();
+</script>

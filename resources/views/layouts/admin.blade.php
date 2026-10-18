@@ -19,6 +19,7 @@
                     <a href="{{ route('admin.dashboard') }}" @class(['text-white' => request()->routeIs('admin.dashboard'), 'hover:text-white' => true, 'whitespace-nowrap' => true])>Dashboard</a>
                     @if (auth()->user()->canAccessAdminArea('products'))
                         <a href="{{ route('admin.products.index') }}" @class(['text-white' => request()->routeIs('admin.products.*'), 'hover:text-white' => true, 'whitespace-nowrap' => true])>Products</a>
+                        <a href="{{ route('admin.categories.index') }}" @class(['text-white' => request()->routeIs('admin.categories.*'), 'hover:text-white' => true, 'whitespace-nowrap' => true])>Categories</a>
                         <a href="{{ route('admin.discount-codes.index') }}" @class(['text-white' => request()->routeIs('admin.discount-codes.*'), 'hover:text-white' => true, 'whitespace-nowrap' => true])>Discount codes</a>
                     @endif
                     @if (auth()->user()->canAccessAdminArea('orders'))
