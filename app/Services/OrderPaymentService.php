@@ -193,7 +193,7 @@ class OrderPaymentService
             'refund_status' => $status,
             'provider_refund_id' => $providerRefund['id'] ?? $payment->provider_refund_id,
             'refund_amount_paise' => isset($providerRefund['amount']) ? (int) $providerRefund['amount'] : $payment->refund_amount_paise,
-            'refunded_at' => $status === 'processed' ? ($payment->refunded_at ?? now()) : null,
+            'refunded_at' => $status === 'processed' ? ($payment->refunded_at ?? now()) : $payment->refunded_at,
             'provider_payload' => array_merge($payment->provider_payload ?? [], ['latest_refund' => $providerRefund]),
         ])->save();
     }
