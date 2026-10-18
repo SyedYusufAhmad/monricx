@@ -57,12 +57,7 @@ class Order extends Model
         return $this->hasMany(StockReservation::class);
     }
 
-    /**
-     * Display labels for refund statuses. There is currently no refund
-     * status column in the database; when the backend value is missing
-     * the label falls back to "Not refunded". No refund data is invented
-     * here and no payment provider is contacted.
-     */
+    /** Display the latest persisted Razorpay refund status for this order. */
     public const REFUND_STATUS_LABELS = [
         'not_refunded' => 'Not refunded',
         'refund_requested' => 'Refund requested',
@@ -73,7 +68,21 @@ class Order extends Model
 
     public function refundStatusLabel(): string
     {
-        $status = $this->getAttribute('refund_status') ?? 'not_refunded';
+        $status = $this->getAttribute('refund_status');
+
+        if (! $status && $this->relationLoaded('payments')) {
+            $status = $this->payments
+                ->pluck('refund_status')
+                ->filter()
+                ->last();
+        }
+
+        $status = match ($status) {
+            'processing' => 'refund_processing',
+            'processed' => 'refunded',
+            'failed' => 'refund_failed',
+            default => $status ?: 'not_refunded',
+        };
 
         return self::REFUND_STATUS_LABELS[$status] ?? self::REFUND_STATUS_LABELS['not_refunded'];
     }
