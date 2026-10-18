@@ -170,6 +170,34 @@ class OrderPaymentService
         $this->processProviderPayment($payment, $providerPayment);
     }
 
+    /** @param array<string, mixed> $providerRefund */
+    public function processWebhookRefund(array $providerRefund): void
+    {
+        $paymentId = $providerRefund['payment_id'] ?? null;
+        if (! is_string($paymentId) || $paymentId === '') {
+            throw new \DomainException('Webhook refund does not include a payment id.');
+        }
+
+        $payment = Payment::query()->where('provider_payment_id', $paymentId)->first();
+        if (! $payment) {
+            throw new \DomainException('Webhook refund does not match a local payment.');
+        }
+
+        $status = match ($providerRefund['status'] ?? null) {
+            'processed' => 'processed',
+            'failed' => 'failed',
+            default => 'processing',
+        };
+
+        $payment->forceFill([
+            'refund_status' => $status,
+            'provider_refund_id' => $providerRefund['id'] ?? $payment->provider_refund_id,
+            'refund_amount_paise' => isset($providerRefund['amount']) ? (int) $providerRefund['amount'] : $payment->refund_amount_paise,
+            'refunded_at' => $status === 'processed' ? ($payment->refunded_at ?? now()) : $payment->refunded_at,
+            'provider_payload' => array_merge($payment->provider_payload ?? [], ['latest_refund' => $providerRefund]),
+        ])->save();
+    }
+
     /**
      * @return array<string, mixed>
      */

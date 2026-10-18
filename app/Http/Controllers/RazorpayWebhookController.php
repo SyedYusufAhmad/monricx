@@ -69,6 +69,18 @@ class RazorpayWebhookController extends Controller
                 $paymentService->processWebhookPayment($providerPayment);
             }
 
+            if (in_array($payload['event'], [
+                'refund.created',
+                'refund.processed',
+                'refund.failed',
+            ], true)) {
+                $providerRefund = data_get($payload, 'payload.refund.entity');
+                if (! is_array($providerRefund)) {
+                    throw new \UnexpectedValueException('Webhook does not contain a refund entity.');
+                }
+                $paymentService->processWebhookRefund($providerRefund);
+            }
+
             $event->forceFill(['processed_at' => now(), 'processing_error' => null])->save();
         } catch (Throwable $exception) {
             $event->forceFill(['processing_error' => $exception->getMessage()])->save();

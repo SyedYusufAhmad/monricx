@@ -459,6 +459,121 @@ class PaymentFlowTest extends TestCase
 
         $this->assertDatabaseCount('payment_webhook_events', 0);
     }
+    public function test_refund_created_webhook_marks_payment_as_processing(): void
+{
+    $payment = $this->setupCapturedPaymentForRefund('pay_refund_created_1', 'refund_created_1');
+
+    $this->sendRefundWebhook('refund.created', [
+        'id' => 'rfnd_created_1',
+        'payment_id' => $payment->provider_payment_id,
+        'status' => 'created',
+        'amount' => 11000,
+    ], 'event_refund_created_1')
+        ->assertOk()
+        ->assertJson(['accepted' => true]);
+
+    $payment = $payment->fresh();
+    $this->assertSame('processing', $payment->refund_status);
+    $this->assertSame('rfnd_created_1', $payment->provider_refund_id);
+    $this->assertSame(11000, $payment->refund_amount_paise);
+    $this->assertNull($payment->refunded_at);
+}
+
+public function test_refund_processed_webhook_marks_payment_as_processed_with_timestamp(): void
+{
+    $payment = $this->setupCapturedPaymentForRefund('pay_refund_processed_1', 'refund_processed_1');
+
+    $this->sendRefundWebhook('refund.processed', [
+        'id' => 'rfnd_processed_1',
+        'payment_id' => $payment->provider_payment_id,
+        'status' => 'processed',
+        'amount' => 11000,
+    ], 'event_refund_processed_1')
+        ->assertOk()
+        ->assertJson(['accepted' => true]);
+
+    $payment = $payment->fresh();
+    $this->assertSame('processed', $payment->refund_status);
+    $this->assertSame('rfnd_processed_1', $payment->provider_refund_id);
+    $this->assertSame(11000, $payment->refund_amount_paise);
+    $this->assertNotNull($payment->refunded_at);
+}
+
+public function test_refund_failed_webhook_marks_payment_as_failed(): void
+{
+    $payment = $this->setupCapturedPaymentForRefund('pay_refund_failed_1', 'refund_failed_1');
+
+    $this->sendRefundWebhook('refund.failed', [
+        'id' => 'rfnd_failed_1',
+        'payment_id' => $payment->provider_payment_id,
+        'status' => 'failed',
+        'amount' => 11000,
+    ], 'event_refund_failed_1')
+        ->assertOk()
+        ->assertJson(['accepted' => true]);
+
+    $payment = $payment->fresh();
+    $this->assertSame('failed', $payment->refund_status);
+    $this->assertSame('rfnd_failed_1', $payment->provider_refund_id);
+    $this->assertSame(11000, $payment->refund_amount_paise);
+    $this->assertNull($payment->refunded_at);
+}
+
+public function test_refund_webhook_for_unknown_payment_is_rejected_safely(): void
+{
+    config(['services.razorpay.webhook_secret' => 'webhook-secret']);
+
+    $this->sendRefundWebhook('refund.processed', [
+        'id' => 'rfnd_unknown_1',
+        'payment_id' => 'pay_does_not_exist',
+        'status' => 'processed',
+        'amount' => 11000,
+    ], 'event_refund_unknown_1')
+        ->assertStatus(500)
+        ->assertJson(['accepted' => false]);
+
+    $this->assertDatabaseMissing('payments', ['provider_refund_id' => 'rfnd_unknown_1']);
+    $this->assertDatabaseHas('payment_webhook_events', ['event_id' => 'event_refund_unknown_1']);
+}
+
+private function setupCapturedPaymentForRefund(string $providerPaymentId, string $eventSuffix): Payment
+{
+    config(['services.razorpay.webhook_secret' => 'webhook-secret']);
+    $product = $this->product(['stock' => 5]);
+    $this->startCheckout($product, 1, 'razorpay');
+    $payment = Payment::query()->sole();
+    $providerPayment = $this->capturedPayment($payment);
+    $providerPayment['id'] = $providerPaymentId;
+    $payload = json_encode([
+        'event' => 'payment.captured',
+        'payload' => ['payment' => ['entity' => $providerPayment]],
+    ], JSON_THROW_ON_ERROR);
+    $this->call('POST', route('razorpay.webhook'), [], [], [], [
+        'CONTENT_TYPE' => 'application/json',
+        'HTTP_X_RAZORPAY_SIGNATURE' => 'valid-webhook-signature',
+        'HTTP_X_RAZORPAY_EVENT_ID' => 'event_capture_'.$eventSuffix,
+    ], $payload)->assertOk();
+
+    $payment = $payment->fresh();
+    $this->assertNotEmpty($payment->provider_payment_id);
+
+    return $payment;
+}
+
+private function sendRefundWebhook(string $event, array $refundEntity, string $eventId): TestResponse
+{
+    $payload = json_encode([
+        'event' => $event,
+        'payload' => ['refund' => ['entity' => $refundEntity]],
+    ], JSON_THROW_ON_ERROR);
+
+    return $this->call('POST', route('razorpay.webhook'), [], [], [], [
+        'CONTENT_TYPE' => 'application/json',
+        'HTTP_X_RAZORPAY_SIGNATURE' => 'valid-webhook-signature',
+        'HTTP_X_RAZORPAY_EVENT_ID' => $eventId,
+    ], $payload);
+}
+
 
     private function startCheckout(
         Product $product,
