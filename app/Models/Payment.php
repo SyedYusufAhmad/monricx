@@ -16,10 +16,12 @@ class Payment extends Model
     {
         return [
             'amount_paise' => 'integer',
+            'refund_amount_paise' => 'integer',
             'provider_payload' => 'array',
             'authorized_at' => 'datetime',
             'captured_at' => 'datetime',
             'failed_at' => 'datetime',
+            'refunded_at' => 'datetime',
         ];
     }
 
