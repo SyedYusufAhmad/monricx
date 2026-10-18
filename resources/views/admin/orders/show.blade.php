@@ -101,7 +101,11 @@
             <section class="rounded-xl bg-white p-6 shadow-sm">
                 <h2 class="font-semibold">Refund status</h2>
                 <p class="mt-4 text-sm">{{ $order->refundStatusLabel() }}</p>
-                <p class="mt-2 text-xs text-black/45">Display only. Refunds are processed separately; no refund is initiated from this page.</p>
+                <p class="mt-2 text-xs text-black/45">Status is read from the recorded Razorpay refund; this action does not initiate a refund.</p>
+                <form method="post" action="{{ route('admin.orders.refund-status.refresh', $order) }}" class="mt-4">
+                    @csrf
+                    <button type="submit" class="w-full rounded-lg border border-black/20 px-4 py-2.5 text-sm">Refresh from Razorpay</button>
+                </form>
             </section>
 
             @if ($order->customer_note)

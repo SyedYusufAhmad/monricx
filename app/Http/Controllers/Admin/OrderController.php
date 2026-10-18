@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\AuditLog;
 use App\Models\Order;
+use App\Services\OrderPaymentService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -76,5 +77,22 @@ class OrderController extends Controller
         return redirect()
             ->route('admin.orders.show', $order)
             ->with('status', 'Fulfilment status updated.');
+    }
+
+    public function refreshRefundStatus(Order $order, OrderPaymentService $paymentService): RedirectResponse
+    {
+        $payment = $order->payments()->whereNotNull('provider_payment_id')->latest('id')->first();
+        if (! $payment) {
+            return back()->withErrors(['refund' => 'No Razorpay payment is associated with this order.']);
+        }
+
+        try {
+            $paymentService->refreshRefundStatus($payment);
+        } catch (\Throwable $exception) {
+            report($exception);
+            return back()->withErrors(['refund' => 'Razorpay refund status could not be refreshed.']);
+        }
+
+        return back()->with('status', 'Refund status refreshed from Razorpay.');
     }
 }

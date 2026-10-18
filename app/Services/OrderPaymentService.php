@@ -198,6 +198,23 @@ class OrderPaymentService
         ])->save();
     }
 
+    public function refreshRefundStatus(Payment $payment): void
+    {
+        if (! $payment->provider_payment_id) {
+            throw new \DomainException('Payment has no Razorpay payment ID.');
+        }
+
+        $refunds = $this->gateway->fetchRefunds($payment->provider_payment_id)['items'] ?? [];
+        $latest = collect($refunds)->sortBy('created_at')->last();
+
+        if (! is_array($latest)) {
+            $payment->forceFill(['refund_status' => null])->save();
+            return;
+        }
+
+        $this->processWebhookRefund($latest);
+    }
+
     /**
      * @return array<string, mixed>
      */

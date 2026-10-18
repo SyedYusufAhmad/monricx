@@ -24,6 +24,9 @@ interface PaymentGateway
      */
     public function fetchPayment(string $paymentId): array;
 
+    /** @return array<string, mixed> */
+    public function fetchRefunds(string $paymentId): array;
+
     /**
      * @return array<string, mixed>
      */

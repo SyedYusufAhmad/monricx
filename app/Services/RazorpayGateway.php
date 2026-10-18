@@ -46,6 +46,11 @@ class RazorpayGateway implements PaymentGateway
         return $this->api()->payment->fetch($paymentId)->toArray();
     }
 
+    public function fetchRefunds(string $paymentId): array
+    {
+        return $this->api()->payment->fetch($paymentId)->refunds()->toArray();
+    }
+
     public function capturePayment(string $paymentId, int $amount, string $currency): array
     {
         return $this->api()->payment->fetch($paymentId)->capture([

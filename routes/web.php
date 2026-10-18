@@ -71,6 +71,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
         Route::get('/orders/{order}', [AdminOrderController::class, 'show'])->name('orders.show');
         Route::patch('/orders/{order}/fulfilment', [AdminOrderController::class, 'updateFulfilment'])
             ->name('orders.fulfilment.update');
+        Route::post('/orders/{order}/refund-status', [AdminOrderController::class, 'refreshRefundStatus'])
+            ->name('orders.refund-status.refresh');
     });
 
     Route::get('/analytics', AdminAnalyticsController::class)

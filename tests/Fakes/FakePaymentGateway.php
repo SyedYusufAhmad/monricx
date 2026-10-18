@@ -21,6 +21,7 @@ class FakePaymentGateway implements PaymentGateway
 
     /** @var array<string, mixed> */
     public array $capturedPaymentResponse = [];
+    public array $refunds = [];
 
     /** @var array<int, array{id: string, amount: int, currency: string}> */
     public array $capturedPayments = [];
@@ -69,6 +70,11 @@ class FakePaymentGateway implements PaymentGateway
     public function fetchPayment(string $paymentId): array
     {
         return array_merge(['id' => $paymentId], $this->fetchedPayment);
+    }
+
+    public function fetchRefunds(string $paymentId): array
+    {
+        return ['items' => $this->refunds];
     }
 
     public function capturePayment(string $paymentId, int $amount, string $currency): array
