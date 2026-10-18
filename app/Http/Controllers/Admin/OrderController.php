@@ -15,7 +15,7 @@ class OrderController extends Controller
 {
     public function index(Request $request): View
     {
-        $query = Order::query()->withCount('items');
+        $query = Order::query()->withCount('items')->with('payments');
 
         if ($request->filled('q')) {
             $search = trim((string) $request->input('q'));

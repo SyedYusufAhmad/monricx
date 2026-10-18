@@ -23,7 +23,7 @@
     <section class="mt-6 overflow-hidden rounded-xl bg-white shadow-sm">
         <div class="overflow-x-auto">
             <table class="w-full min-w-[980px] text-left text-sm">
-                <thead class="bg-black/[0.03] text-black/55"><tr><th class="px-5 py-3">Order</th><th class="px-5 py-3">Customer</th><th class="px-5 py-3">Method</th><th class="px-5 py-3">Payment</th><th class="px-5 py-3">Items</th><th class="px-5 py-3">Total</th><th class="px-5 py-3">Created</th></tr></thead>
+                <thead class="bg-black/[0.03] text-black/55"><tr><th class="px-5 py-3">Order</th><th class="px-5 py-3">Customer</th><th class="px-5 py-3">Method</th><th class="px-5 py-3">Payment</th><th class="px-5 py-3">Refund</th><th class="px-5 py-3">Items</th><th class="px-5 py-3">Total</th><th class="px-5 py-3">Created</th></tr></thead>
                 <tbody class="divide-y divide-black/10">
                     @forelse ($orders as $order)
                         <tr>
@@ -31,12 +31,13 @@
                             <td class="px-5 py-4"><p>{{ $order->customer_name }}</p><p class="mt-1 text-xs text-black/45">{{ $order->customer_email }}</p></td>
                             <td class="px-5 py-4">{{ $order->payment_method === 'cash_on_delivery' ? 'Cash on delivery' : 'Online' }}</td>
                             <td class="px-5 py-4">{{ str($order->payment_status)->replace('_', ' ')->title() }}</td>
+                            <td class="px-5 py-4">{{ $order->refundStatusLabel() }}</td>
                             <td class="px-5 py-4">{{ $order->items_count }}</td>
                             <td class="px-5 py-4">₹{{ number_format($order->total_paise / 100, 2) }}</td>
                             <td class="px-5 py-4">{{ $order->created_at->format('d M Y, H:i') }}</td>
                         </tr>
                     @empty
-                        <tr><td colspan="7" class="px-6 py-12 text-center text-black/50">No orders have been received.</td></tr>
+                        <tr><td colspan="8" class="px-6 py-12 text-center text-black/50">No orders have been received.</td></tr>
                     @endforelse
                 </tbody>
             </table>
