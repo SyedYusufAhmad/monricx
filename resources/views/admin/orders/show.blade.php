@@ -22,6 +22,7 @@
                         <div class="flex items-start justify-between gap-5 px-6 py-5 text-sm">
                             <div>
                                 <p class="font-medium">{{ $item->product_title }}</p>
+                                <p class="mt-1 text-xs text-black/45">SKU: {{ $item->product?->sku ?: '—' }}</p>
                                 @if (data_get($item->metadata, 'variant_title'))
                                     <p class="mt-1 text-black/60">{{ data_get($item->metadata, 'variant_title') }}</p>
                                 @endif
@@ -95,6 +96,12 @@
                     <button type="submit" class="mt-3 w-full rounded-lg bg-[#080808] px-4 py-2.5 text-sm text-white" @disabled(! in_array($order->payment_status, ['captured', 'cod_fee_paid'], true))>Save fulfilment status</button>
                     @if (! in_array($order->payment_status, ['captured', 'cod_fee_paid'], true))<p class="mt-2 text-xs text-black/45">Available after the required online payment is confirmed.</p>@endif
                 </form>
+            </section>
+
+            <section class="rounded-xl bg-white p-6 shadow-sm">
+                <h2 class="font-semibold">Refund status</h2>
+                <p class="mt-4 text-sm">{{ $order->refundStatusLabel() }}</p>
+                <p class="mt-2 text-xs text-black/45">Display only. Refunds are processed separately; no refund is initiated from this page.</p>
             </section>
 
             @if ($order->customer_note)
