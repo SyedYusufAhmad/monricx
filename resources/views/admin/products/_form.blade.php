@@ -146,7 +146,7 @@
         <div class="mt-4 space-y-4">
             <div>
                 <label for="modal-category-name" class="mb-2 block text-sm">Name</label>
-                <input id="modal-category-name" name="name" required maxlength="255" class="w-full rounded-lg border border-black/20 px-4 py-3" placeholder="e.g. Anklets">
+                <input id="modal-category-name" name="name" maxlength="255" class="w-full rounded-lg border border-black/20 px-4 py-3" placeholder="e.g. Anklets">
                 <p class="modal-error mt-1 hidden text-sm text-red-700" data-error-for="name"></p>
             </div>
             <div>
@@ -239,6 +239,12 @@
     });
     document.addEventListener('keydown', function (event) {
         if (event.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+    });
+    nameInput.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            submitBtn.click();
+        }
     });
 
     submitBtn.addEventListener('click', function () {
