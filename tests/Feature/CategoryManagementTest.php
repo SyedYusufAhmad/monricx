@@ -239,4 +239,26 @@ class CategoryManagementTest extends TestCase
         $this->post(route('admin.categories.store'), ['name' => 'Anklets'])
             ->assertRedirect(route('admin.login'));
     }
+
+    public function test_product_form_category_modal_has_no_required_fields_blocking_submit(): void
+    {
+        $this->withoutVite();
+        $admin = $this->admin();
+
+        $html = $this->actingAs($admin)
+            ->get(route('admin.products.create'))
+            ->assertOk()
+            ->getContent();
+
+        // The quick-add category modal lives inside the product form. A `required`
+        // attribute on its hidden inputs would silently block the browser from
+        // submitting "Create product" with no visible error.
+        preg_match_all('/<input[^>]*id="modal-category-[a-z-]+"[^>]*>/', $html, $matches);
+
+        $this->assertNotEmpty($matches[0], 'Expected the category modal inputs to be rendered.');
+
+        foreach ($matches[0] as $tag) {
+            $this->assertStringNotContainsStringIgnoringCase('required', $tag, "Modal input must not be required: {$tag}");
+        }
+    }
 }
