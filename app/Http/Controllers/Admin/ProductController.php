@@ -135,6 +135,7 @@ class ProductController extends Controller
             'discounted_price' => ['nullable', 'decimal:0,2', 'min:0.01', 'lt:price'],
             'stock' => ['required', 'integer', 'min:0', 'max:4294967295'],
             'description' => ['required', 'string', 'max:50000'],
+            'badge' => ['nullable', 'string', 'max:50'],
             'status' => ['required', Rule::in(['draft', 'published'])],
             'images' => ['nullable', 'array', 'max:8'],
             'images.*' => ['image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
@@ -166,6 +167,7 @@ class ProductController extends Controller
             'description' => $product?->description_is_html
                 ? app(TrustedProductDescription::class)->validate(trim($validated['description']))
                 : trim($validated['description']),
+            'badge' => filled($validated['badge'] ?? null) ? trim($validated['badge']) : null,
             'status' => $validated['status'],
             'published_at' => $validated['status'] === 'published'
                 ? ($product?->published_at ?? now())

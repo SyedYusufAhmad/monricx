@@ -271,6 +271,38 @@ class AdminOperationsTest extends TestCase
         $this->assertDatabaseCount('page_views', 1);
     }
 
+    public function test_admin_can_set_a_badge_when_creating_a_product(): void
+    {
+        $this->withoutVite();
+
+        $admin = User::factory()->create(['role' => 'super_admin', 'is_active' => true]);
+        $category = Category::query()->where('slug', 'rings')->firstOrFail();
+
+        $payload = [
+            'category_id' => $category->id,
+            'title' => 'Test Badge Ring',
+            'price' => '999.00',
+            'stock' => 5,
+            'description' => 'A product to test the badge field.',
+            'status' => 'draft',
+            'badge' => 'Top Choice',
+        ];
+
+        $response = $this->actingAs($admin)->post('/admin/products', $payload);
+
+        $product = Product::query()->where('title', 'Test Badge Ring')->firstOrFail();
+        $response->assertRedirect(route('admin.products.edit', $product));
+        $this->assertSame('Top Choice', $product->badge);
+
+        // A blank badge is stored as null, not an empty string.
+        $this->actingAs($admin)->put(
+            route('admin.products.update', $product),
+            array_merge($payload, ['badge' => ''])
+        )->assertRedirect(route('admin.products.edit', $product));
+
+        $this->assertNull($product->fresh()->badge);
+    }
+
     /** @param array<string, mixed> $overrides */
     private function createOrder(array $overrides = []): Order
     {
