@@ -26,13 +26,11 @@
                 </div>
                 <div>
                     <label for="badge" class="mb-2 block text-sm">Badge <span class="text-black/50">(optional)</span></label>
-                    <input id="badge" name="badge" list="badge-presets" value="{{ old('badge', $product->badge ?? '') }}" maxlength="50" class="w-full rounded-lg border border-black/20 px-4 py-3" placeholder="e.g. Top Choice">
+                    <input id="badge" name="badge" list="badge-presets" value="{{ old('badge', $product->badge ?? '') }}" maxlength="50" class="w-full rounded-lg border border-black/20 px-4 py-3" placeholder="e.g. ⭐ TOP CHOICE">
                     <datalist id="badge-presets">
-                        <option value="Top Choice"></option>
-                        <option value="Bestseller"></option>
-                        <option value="New Arrival"></option>
-                        <option value="Sale"></option>
-                        <option value="Limited Edition"></option>
+                        <option value="⭐ TOP CHOICE"></option>
+                        <option value="🌸 LIMITED EDITION"></option>
+                        <option value="👑 EXCLUSIVE"></option>
                     </datalist>
                     <p class="mt-1 text-xs text-black/50">Shown as a banner on the product card. Leave blank for no badge.</p>
                     @error('badge')<p class="mt-2 text-sm text-red-700">{{ $message }}</p>@enderror

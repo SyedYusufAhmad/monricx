@@ -285,14 +285,14 @@ class AdminOperationsTest extends TestCase
             'stock' => 5,
             'description' => 'A product to test the badge field.',
             'status' => 'draft',
-            'badge' => 'Top Choice',
+            'badge' => '⭐ TOP CHOICE',
         ];
 
         $response = $this->actingAs($admin)->post('/admin/products', $payload);
 
         $product = Product::query()->where('title', 'Test Badge Ring')->firstOrFail();
         $response->assertRedirect(route('admin.products.edit', $product));
-        $this->assertSame('Top Choice', $product->badge);
+        $this->assertSame('⭐ TOP CHOICE', $product->badge);
 
         // A blank badge is stored as null, not an empty string.
         $this->actingAs($admin)->put(
