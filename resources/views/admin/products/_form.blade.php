@@ -146,21 +146,21 @@
         <div class="mt-4 space-y-4">
             <div>
                 <label for="modal-category-name" class="mb-2 block text-sm">Name</label>
-                <input id="modal-category-name" name="name" maxlength="255" class="w-full rounded-lg border border-black/20 px-4 py-3" placeholder="e.g. Anklets">
+                <input id="modal-category-name" maxlength="255" class="w-full rounded-lg border border-black/20 px-4 py-3" placeholder="e.g. Anklets">
                 <p class="modal-error mt-1 hidden text-sm text-red-700" data-error-for="name"></p>
             </div>
             <div>
                 <label for="modal-category-description" class="mb-2 block text-sm">Description <span class="text-black/40">(optional)</span></label>
-                <textarea id="modal-category-description" name="description" rows="3" class="w-full rounded-lg border border-black/20 px-4 py-3"></textarea>
+                <textarea id="modal-category-description" rows="3" class="w-full rounded-lg border border-black/20 px-4 py-3"></textarea>
                 <p class="modal-error mt-1 hidden text-sm text-red-700" data-error-for="description"></p>
             </div>
             <div>
                 <label for="modal-category-image" class="mb-2 block text-sm">Image <span class="text-black/40">(optional)</span></label>
-                <input id="modal-category-image" name="image" type="file" accept="image/*" class="w-full text-sm">
+                <input id="modal-category-image" type="file" accept="image/*" class="w-full text-sm">
                 <p class="modal-error mt-1 hidden text-sm text-red-700" data-error-for="image"></p>
             </div>
             <label class="flex cursor-pointer items-center gap-3 text-sm">
-                <input id="modal-category-active" type="checkbox" name="is_active" value="1" checked class="h-5 w-5 accent-black">
+                <input id="modal-category-active" type="checkbox" value="1" checked class="h-5 w-5 accent-black">
                 Active
             </label>
             <p id="category-modal-general-error" class="hidden text-sm text-red-700"></p>

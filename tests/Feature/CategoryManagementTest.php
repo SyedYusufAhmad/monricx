@@ -19,6 +19,35 @@ class CategoryManagementTest extends TestCase
         return User::factory()->create(['role' => 'super_admin', 'is_active' => true]);
     }
 
+    public function test_product_form_has_no_duplicate_field_names(): void
+    {
+        $this->withoutVite();
+        $admin = $this->admin();
+
+        $html = $this->actingAs($admin)
+            ->get(route('admin.products.create'))
+            ->assertOk()
+            ->getContent();
+
+        // The quick-add category modal lives inside the product form: any field
+        // name it shares with the product form would silently overwrite the
+        // product's value on submit (PHP keeps the last duplicate).
+        preg_match('/<form[^>]*action="[^"]*\/admin\/products"[^>]*>(.*?)<\/form>/s', $html, $formMatch);
+        $this->assertNotEmpty($formMatch, 'Expected the product form on the page.');
+
+        preg_match_all('/\sname="([^"]+)"/', $formMatch[1], $nameMatches);
+
+        // Array-style names (images[], variants[x][y]) intentionally repeat.
+        $singular = array_values(array_filter(
+            $nameMatches[1],
+            fn ($name) => ! str_contains($name, '['),
+        ));
+
+        $duplicates = array_diff_assoc($singular, array_unique($singular));
+
+        $this->assertEmpty($duplicates, 'Duplicate field names in product form: '.implode(', ', $duplicates));
+    }
+
     public function test_admin_can_create_a_category(): void
     {
         $admin = $this->admin();
