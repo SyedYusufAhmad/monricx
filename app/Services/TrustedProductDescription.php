@@ -28,7 +28,7 @@ class TrustedProductDescription
                 continue;
             }
 
-            if ($attributes !== 'style="text-align: center;"') {
+            if ($attributes !== '') {
                 $this->invalid();
             }
         }

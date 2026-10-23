@@ -206,7 +206,7 @@ a { transition: color .2s ease, opacity .2s ease, border-color .2s ease, backgro
 .monricx-product-buy > button { min-width: 125px; height: 50px; border-radius: 999px; background: #000; padding: 16px 28px; color: #f7f2f3; font-family: 'Manrope', sans-serif; font-size: 14px; line-height: 18.2px; box-shadow: 0 4px 16px rgba(0,0,0,.12); white-space: nowrap; }
 .monricx-product-buy > button:disabled { cursor: not-allowed; opacity: .45; }
 .monricx-product-error { margin-top: 16px; color: #a22626; font-size: 13px; }
-.monricx-product-description { margin-top: 56px; color: #0b0b0b; font-family: 'Manrope', sans-serif; font-size: 16px; font-weight: 400; line-height: 28px; }
+.monricx-product-description { margin-top: 56px; color: #0b0b0b; font-family: 'Manrope', sans-serif; font-size: 16px; font-weight: 400; line-height: 28px; text-align: center; }
 .monricx-product-description h3 { margin: 0; font-family: inherit; font-size: 18.72px; font-weight: 700; line-height: 32.76px; }
 .monricx-product-description ul { margin: 0; padding-left: 16px; list-style: disc inside; }
 .monricx-product-description li p { display: inline; margin-bottom: 8px; }
